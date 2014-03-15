@@ -15,7 +15,7 @@ module Mercadolibre
         pages_remaining = filters[:pages_count] || -1
 
         while (has_results && (pages_remaining != 0)) do
-          partial_results = get_request(action, filters)['questions'][:body]
+          partial_results = get_request(action, filters)[:body]['questions']
 
           results += partial_results.map { |q| Mercadolibre::Entity::Question.new(q) }
 
