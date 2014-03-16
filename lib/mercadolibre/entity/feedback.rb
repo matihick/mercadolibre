@@ -2,7 +2,7 @@ module Mercadolibre
   module Entity
     class Feedback
       def self.attr_list
-        [:rating, :date_created, :fulfilled, :reason, :message, :reply]
+        [:rating, :date_created, :fulfilled, :reason, :message, :reply, :status]
       end
 
       attr_reader *attr_list

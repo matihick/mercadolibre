@@ -9,3 +9,7 @@
 ## v0.0.3
 
 * Bugfix in get all questions method
+
+## v0.0.4
+
+* Added status to feedback
