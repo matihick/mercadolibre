@@ -17,3 +17,7 @@
 ## v0.0.5
 
 * Added more API methods
+
+## v0.0.6
+
+* Added listing kind methods
