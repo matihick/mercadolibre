@@ -21,3 +21,7 @@
 ## v0.0.6
 
 * Added listing kind methods
+
+## v0.0.7
+
+* Added featured listings search

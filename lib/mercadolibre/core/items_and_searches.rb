@@ -96,6 +96,24 @@ module Mercadolibre
         result[:body]['url']
       end
 
+      def get_hot_items(site_id, category_id, limit=15)
+        results = get_request("/sites/#{site_id}/hot_items/search?category=#{category_id}&limit=#{limit}")
+
+        results[:body].map { |r| Mercadolibre::Entity::Item.new(r) }
+      end
+
+      def get_featured_items(site_id, pool_id)
+        results = get_request("/sites/#{site_id}/featured_items/#{pool_id}")
+
+        results[:body].map { |r| Mercadolibre::Entity::FeaturedItem.new(r) }
+      end
+
+      def get_site_trends(site_id, category_id)
+        results = get_request("/sites/#{site_id}/trends/search", { category: category_id })
+
+        results[:body].map { |r| Mercadolibre::Entity::SiteTrend.new(r) }
+      end
+
       def create_item(attribs)
         payload = attribs.to_json
 
