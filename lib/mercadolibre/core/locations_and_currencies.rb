@@ -1,6 +1,6 @@
 module Mercadolibre
   module Core
-    module Locations
+    module LocationsAndCurrencies
       def get_countries
         results = get_request('/countries')
 
@@ -47,6 +47,12 @@ module Mercadolibre
           ratio: result[:body]['ratio'],
           mercado_pago_ratio: result[:body]['mercado_pago_ratio']
         })
+      end
+
+      def get_zip_code_info(country_id, zip_code)
+        result = get_request("/countries/#{country_id}/zip_codes/#{zip_code}")
+
+        Mercadolibre::Entity::ZipCode.new(result[:body])
       end
     end
   end

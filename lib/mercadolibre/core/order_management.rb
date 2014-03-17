@@ -1,6 +1,6 @@
 module Mercadolibre
   module Core
-    module Orders
+    module OrderManagement
       def get_all_orders(filters={})
         filters.merge!({
           seller: get_my_user.id,
@@ -120,6 +120,12 @@ module Mercadolibre
         else
           raise 'invalid kind'
         end
+      end
+
+      def get_site_payment_methods(site_id)
+        results = get_request("/sites/#{site_id}/payment_methods")
+
+        results[:body].map { |r| Mercadolibre::Entity::PaymentMethod.new(r) }
       end
     end
   end

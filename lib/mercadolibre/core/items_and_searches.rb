@@ -1,6 +1,7 @@
 module Mercadolibre
   module Core
-    module Items
+    module ItemsAndSearches
+      # This method is meant to be used when you need to save all data in your local database
       def get_all_my_item_ids(filters={})
         user_id = get_my_user.id
 
@@ -35,6 +36,7 @@ module Mercadolibre
         }
       end
 
+      # This method is meant to be used when you need to save all data in your local database
       def get_all_item_ids(filters={})
         filters.merge!({ limit: 50, offset: 0 })
 
@@ -63,13 +65,35 @@ module Mercadolibre
         }
       end
 
+      def get_item(item_id)
+        result = get_request("/items/#{item_id}")
+
+        Mercadolibre::Entity::Item.new(result[:body])
+      end
+
       def get_item_visits(item_ids)
         if item_ids.is_a? Array
           get_request("/visits/items?ids=#{item_ids.join(',')}")[:body]
         else
           get_request("/visits/items?ids=#{item_ids}")[:body][item_ids]
         end
+      end
 
+      def get_item_descriptions(item_id)
+        results = get_request("/items/#{item_id}/descriptions")
+
+        results[:body].map { |r| Mercadolibre::Entity::ItemDescription.new(r) }
+      end
+
+      def get_item_available_upgrades(item_id)
+        results = get_request("/items/#{item_id}/available_upgrades?access_token=@access_token")
+
+        results[:body].map { |r| Mercadolibre::Entity::ListingType.new(r) }
+      end
+
+      def get_search_url(site_id, q)
+        result = get_request("/sites/#{site_id}/searchUrl?q=#{q}")
+        result[:body]['url']
       end
 
       def create_item(attribs)
@@ -92,20 +116,6 @@ module Mercadolibre
         Mercadolibre::Entity::Item.new(result[:body])
       end
 
-      def get_item(item_id)
-        result = get_request("/items/#{item_id}")
-
-        Mercadolibre::Entity::Item.new(result[:body])
-      end
-
-      def add_item_description(item_id, text)
-        payload = { text: text }.to_json
-
-        headers = { content_type: :json, accept: :json }
-
-        post_request("/items/#{item_id}/descriptions?access_token=#{@access_token}", payload, headers)[:body]
-      end
-
       def update_item_fields(item_id, attribs)
         payload = attribs.to_json
 
@@ -120,6 +130,14 @@ module Mercadolibre
         headers = { content_type: :json, accept: :json }
 
         post_request("/items/#{item_id}/listing_type?access_token=#{@access_token}", payload, headers)[:body]
+      end
+
+      def add_item_description(item_id, text)
+        payload = { text: text }.to_json
+
+        headers = { content_type: :json, accept: :json }
+
+        post_request("/items/#{item_id}/descriptions?access_token=#{@access_token}", payload, headers)[:body]
       end
     end
   end

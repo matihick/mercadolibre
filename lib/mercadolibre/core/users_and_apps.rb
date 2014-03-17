@@ -1,6 +1,6 @@
 module Mercadolibre
   module Core
-    module Users
+    module UsersAndApps
       def get_my_user
         result = get_request('/users/me', { access_token: @access_token })
 
@@ -17,6 +17,12 @@ module Mercadolibre
         results = get_request('/users', { ids: user_ids.join(',') })
 
         results[:body].map { |r| Mercadolibre::Entity::User.new(r) }
+      end
+
+      def get_user_accepted_payment_methods(user_id)
+        results = get_request("/users/#{user_id}/accepted_payment_methods")
+
+        results[:body].map { |r| Mercadolibre::Entity::PaymentMethod.new(r) }
       end
     end
   end

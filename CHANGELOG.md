@@ -13,3 +13,7 @@
 ## v0.0.4
 
 * Added status to feedback
+
+## v0.0.5
+
+* Added more API methods
