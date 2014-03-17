@@ -25,3 +25,7 @@
 ## v0.0.7
 
 * Added featured listings search
+
+## v0.0.8
+
+* Fixed references

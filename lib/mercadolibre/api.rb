@@ -13,11 +13,12 @@ module Mercadolibre
     end
 
     include Mercadolibre::Core::Auth
-    include Mercadolibre::Core::Users
-    include Mercadolibre::Core::Locations
-    include Mercadolibre::Core::Items
+    include Mercadolibre::Core::CategoriesAndListings
+    include Mercadolibre::Core::ItemsAndSearches
+    include Mercadolibre::Core::LocationsAndCurrencies
+    include Mercadolibre::Core::OrderManagement
     include Mercadolibre::Core::Questions
-    include Mercadolibre::Core::Orders
+    include Mercadolibre::Core::UsersAndApps
 
     private
 
