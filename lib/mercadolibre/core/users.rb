@@ -1,6 +1,6 @@
 module Mercadolibre
   module Core
-    module UsersAndApps
+    module Users
       def get_my_user
         result = get_request('/users/me', { access_token: @access_token })
 

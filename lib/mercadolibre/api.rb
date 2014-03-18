@@ -18,7 +18,7 @@ module Mercadolibre
     include Mercadolibre::Core::LocationsAndCurrencies
     include Mercadolibre::Core::OrderManagement
     include Mercadolibre::Core::Questions
-    include Mercadolibre::Core::UsersAndApps
+    include Mercadolibre::Core::Users
 
     private
 

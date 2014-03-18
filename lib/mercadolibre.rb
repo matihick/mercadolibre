@@ -37,7 +37,7 @@ require "mercadolibre/core/items_and_searches"
 require "mercadolibre/core/locations_and_currencies"
 require "mercadolibre/core/order_management"
 require "mercadolibre/core/questions"
-require "mercadolibre/core/users_and_apps"
+require "mercadolibre/core/users"
 require "mercadolibre/api"
 
 # dependencies

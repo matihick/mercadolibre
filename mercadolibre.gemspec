@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Mercadolibre::VERSION
   spec.authors       = ["Matias Hick"]
   spec.email         = ["unformatt@gmail.com"]
-  spec.summary       = "Connect to meli api"
-  spec.description   = "Connect to meli api"
+  spec.summary       = "Connect to Mercadolibre through Meli API"
+  spec.description   = "Connect to Mercadolibre through Meli API"
   spec.homepage      = "https://github.com/unformattmh/mercadolibre"
   spec.license       = "MIT"
 

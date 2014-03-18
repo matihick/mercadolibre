@@ -33,3 +33,7 @@
 ## v0.0.9
 
 * Implemented more methods from the API
+
+## v0.1.0
+
+* Improved documentation and little refactor

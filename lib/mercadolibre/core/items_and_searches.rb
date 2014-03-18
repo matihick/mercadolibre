@@ -152,8 +152,8 @@ module Mercadolibre
         put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)[:body]
       end
 
-      def update_item_listing_type(item_id, new_listing_kind)
-        payload = { id: new_listing_kind }.to_json
+      def update_item_listing_type(item_id, listing_type_id)
+        payload = { id: listing_type_id }.to_json
 
         headers = { content_type: :json, accept: :json }
 
