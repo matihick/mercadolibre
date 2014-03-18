@@ -29,3 +29,7 @@
 ## v0.0.8
 
 * Fixed references
+
+## v0.0.9
+
+* Implemented more methods from the API

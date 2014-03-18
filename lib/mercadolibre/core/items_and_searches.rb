@@ -114,6 +114,16 @@ module Mercadolibre
         results[:body].map { |r| Mercadolibre::Entity::SiteTrend.new(r) }
       end
 
+      def item_valid?(attribs)
+        payload = attribs.to_json
+
+        headers = { content_type: :json }
+
+        result = post_request("/items/validate?access_token=#{@access_token}", payload, headers)
+
+        (result[:status_code].to_s == '204')
+      end
+
       def create_item(attribs)
         payload = attribs.to_json
 

@@ -86,6 +86,18 @@ module Mercadolibre
         { seller: sale_feedback, buyer: purchase_feedback }
       end
 
+      def get_buyer_feedback(order_id)
+        result = get_request("/orders/#{order_id}/feedback/purchase?access_token=#{@access_token}")
+
+        Mercadolibre::Entity::Feedback.new(result[:body])
+      end
+
+      def get_seller_feedback(order_id)
+        result = get_request("/orders/#{order_id}/feedback/sale?access_token=#{@access_token}")
+
+        Mercadolibre::Entity::Feedback.new(result[:body])
+      end
+
       def give_feedback_to_order(order_id, feedback_data)
         payload = feedback_data.to_json
 
@@ -126,6 +138,12 @@ module Mercadolibre
         results = get_request("/sites/#{site_id}/payment_methods")
 
         results[:body].map { |r| Mercadolibre::Entity::PaymentMethod.new(r) }
+      end
+
+      def get_order_blacklist(user_id)
+        results = get_request("/users/#{user_id}/order_blacklist?access_token=#{@access_token}")
+
+        results[:body].map { |r| Mercadolibre::Entity::User.new(r) }
       end
     end
   end

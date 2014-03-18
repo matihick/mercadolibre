@@ -2,7 +2,7 @@ module Mercadolibre
   module Entity
     class User
       def self.attr_list
-        [:id, :nickname, :registration_date, :first_name, :last_name,
+        [:id, :nickname, :registration_date, :first_name, :last_name, :blocked,
         :country_id, :email, :user_type, :points, :site_id, :permalink, :phone]
       end
 

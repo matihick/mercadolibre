@@ -29,6 +29,7 @@ require "mercadolibre/entity/site_trend"
 require "mercadolibre/entity/state"
 require "mercadolibre/entity/user"
 require "mercadolibre/entity/zip_code"
+
 # core
 require "mercadolibre/core/auth"
 require "mercadolibre/core/categories_and_listings"
