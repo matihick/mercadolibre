@@ -37,3 +37,7 @@
 ## v0.1.0
 
 * Improved documentation and little refactor
+
+## v0.1.1
+
+* Fixed limit of items to get visits

@@ -73,7 +73,13 @@ module Mercadolibre
 
       def get_item_visits(item_ids)
         if item_ids.is_a? Array
-          get_request("/visits/items?ids=#{item_ids.join(',')}")[:body]
+          result = { }
+
+          item_ids.each_slice(50) do |ids_group|
+            result.merge!(get_request("/visits/items?ids=#{ids_group.join(',')}")[:body])
+          end
+
+          result
         else
           get_request("/visits/items?ids=#{item_ids}")[:body][item_ids]
         end
