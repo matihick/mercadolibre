@@ -41,3 +41,7 @@
 ## v0.1.1
 
 * Fixed limit of items to get visits
+
+## v0.1.2
+
+* Added questions count method
