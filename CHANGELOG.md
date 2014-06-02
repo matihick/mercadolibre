@@ -45,3 +45,7 @@
 ## v0.1.2
 
 * Added questions count method
+
+## v0.1.3
+
+* Fixed questions count method

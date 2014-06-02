@@ -45,7 +45,7 @@ module Mercadolibre
       end
 
       def get_questions_count(filters={})
-        filters.merge!({ access_token: @access_token, limit: 0, offset: 0 })
+        filters.merge!({ access_token: @access_token, limit: 1, offset: 0 })
 
         if filters[:seller_id]
           url = '/questions/search'
