@@ -114,8 +114,14 @@ module Mercadolibre
         results[:body].map { |r| Mercadolibre::Entity::FeaturedItem.new(r) }
       end
 
-      def get_site_trends(site_id, category_id)
-        results = get_request("/sites/#{site_id}/trends/search", { category: category_id })
+      def get_site_trends(site_id, category_id=nil)
+        if category_id.present?
+          params = { category: category_id }
+        else
+          params = { }
+        end
+
+        results = get_request("/sites/#{site_id}/trends/search", params)
 
         results[:body].map { |r| Mercadolibre::Entity::SiteTrend.new(r) }
       end

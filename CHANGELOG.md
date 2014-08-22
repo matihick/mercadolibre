@@ -49,3 +49,7 @@
 ## v0.1.3
 
 * Fixed questions count method
+
+## v0.1.4
+
+* Fixed site trends param
