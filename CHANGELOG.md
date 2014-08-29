@@ -53,3 +53,7 @@
 ## v0.1.4
 
 * Fixed site trends param
+
+## v0.1.5
+
+* Splitted question methods

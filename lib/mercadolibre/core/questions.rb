@@ -1,21 +1,53 @@
 module Mercadolibre
   module Core
     module Questions
-      def get_all_questions(filters={})
+      def get_all_my_questions(filters={})
         filters.merge!({ access_token: @access_token, limit: 50, offset: 0 })
-
-        if filters[:seller_id]
-          action = '/questions/search'
-        else
-          action = '/my/received_questions/search'
-        end
 
         results = []
         has_results = true
         pages_remaining = filters[:pages_count] || -1
 
         while (has_results && (pages_remaining != 0)) do
-          partial_results = get_request(action, filters)[:body]['questions']
+          partial_results = get_request('/my/received_questions/search', filters)[:body]['questions']
+
+          results += partial_results.map { |q| Mercadolibre::Entity::Question.new(q) }
+
+          has_results = partial_results.any?
+          filters[:offset] += 50
+          pages_remaining -= 1
+        end
+
+        results
+      end
+
+      def get_my_questions(filters={})
+        filters.merge!({ access_token: @access_token })
+
+        response = get_request('/my/received_questions/search', filters)[:body]
+
+        {
+          results: response['questions'].map { |r| Mercadolibre::Entity::Question.new(r) },
+          paging: { total: response['total'], limit: response['limit'] }
+        }
+      end
+
+      def get_my_questions_count(filters={})
+        filters.merge!({ access_token: @access_token, limit: 1, offset: 0 })
+
+        get_request('/my/received_questions/search', filters)[:body]['total'].to_i
+      end
+
+
+      def get_all_questions(filters={})
+        filters.merge!({ access_token: @access_token, limit: 50, offset: 0 })
+
+        results = []
+        has_results = true
+        pages_remaining = filters[:pages_count] || -1
+
+        while (has_results && (pages_remaining != 0)) do
+          partial_results = get_request('/questions/search', filters)[:body]['questions']
 
           results += partial_results.map { |q| Mercadolibre::Entity::Question.new(q) }
 
@@ -30,13 +62,7 @@ module Mercadolibre
       def get_questions(filters={})
         filters.merge!({ access_token: @access_token })
 
-        if filters[:seller_id]
-          url = '/questions/search'
-        else
-          url = '/my/received_questions/search'
-        end
-
-        response = get_request(url, filters)[:body]
+        response = get_request('/questions/search', filters)[:body]
 
         {
           results: response['questions'].map { |r| Mercadolibre::Entity::Question.new(r) },
@@ -47,13 +73,7 @@ module Mercadolibre
       def get_questions_count(filters={})
         filters.merge!({ access_token: @access_token, limit: 1, offset: 0 })
 
-        if filters[:seller_id]
-          url = '/questions/search'
-        else
-          url = '/my/received_questions/search'
-        end
-
-        get_request(url, filters)[:body]['total'].to_i
+        get_request('/questions/search', filters)[:body]['total'].to_i
       end
 
       def get_question(question_id)
