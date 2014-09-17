@@ -57,3 +57,7 @@
 ## v0.1.5
 
 * Splitted question methods
+
+## v0.2.0
+
+* Added payment method detail

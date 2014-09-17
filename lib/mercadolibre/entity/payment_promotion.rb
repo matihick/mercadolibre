@@ -1,10 +1,9 @@
 module Mercadolibre
   module Entity
-    class PaymentMethod
+    class PaymentPromotion
       def self.attr_list
-        [:id, :name, :payment_type_id, :card_issuer, :site_id, :thumbnail, :secure_thumbnail,
-         :labels, :min_accreditation_days, :max_accreditation_days, :payer_costs,
-         :exceptions_by_card_issuer, :card_configuration]
+        [:card_issuer, :labels, :thumbnail, :secure_thumbnail,
+         :payer_costs, :accepted_bins, :total_financial_cost]
       end
 
       attr_reader *attr_list
@@ -15,10 +14,6 @@ module Mercadolibre
             self.card_issuer = CardIssuer.new(v)
           elsif k.to_s == 'payer_costs'
             self.payer_costs = v.map { |x| PaymentPlan.new(x) }
-          elsif k.to_s == 'exceptions_by_card_issuer'
-            self.exceptions_by_card_issuer = v.map { |x| PaymentPromotion.new(x) }
-          elsif k.to_s == 'card_configuration'
-            self.card_configuration = v.map { |x| CardConfiguration.new(x) }
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

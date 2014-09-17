@@ -140,6 +140,12 @@ module Mercadolibre
         results[:body].map { |r| Mercadolibre::Entity::PaymentMethod.new(r) }
       end
 
+      def get_site_payment_method_info(site_id, payment_method_id)
+        results = get_request("/sites/#{site_id}/payment_methods/#{payment_method_id}")
+
+        Mercadolibre::Entity::PaymentMethod.new(results[:body])
+      end
+
       def get_order_blacklist(user_id)
         results = get_request("/users/#{user_id}/order_blacklist?access_token=#{@access_token}")
 
