@@ -10,6 +10,7 @@ module Mercadolibre
       @access_token = args[:access_token]
       @endpoint_url = 'https://api.mercadolibre.com'
       @auth_url = 'https://auth.mercadolibre.com.ar'
+      @debug = args[:debug]
     end
 
     include Mercadolibre::Core::Auth
@@ -71,11 +72,15 @@ module Mercadolibre
     end
 
     def parse_response(response)
-      {
+      result = {
         headers: response.headers,
         body: (JSON.parse(response.body) rescue response.body),
         status_code: response.code
       }
+
+      p "DEBUG: #{result}" if @debug
+
+      result
     end
   end
 end

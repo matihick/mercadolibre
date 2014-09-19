@@ -61,3 +61,7 @@
 ## v0.2.0
 
 * Added payment method detail
+
+## v0.2.1
+
+* Added debug
