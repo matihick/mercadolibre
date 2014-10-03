@@ -65,3 +65,7 @@
 ## v0.2.1
 
 * Added debug
+
+## v0.2.2
+
+* Fixed runtime dependencies
