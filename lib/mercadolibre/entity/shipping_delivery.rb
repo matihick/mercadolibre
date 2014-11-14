@@ -1,16 +1,16 @@
 module Mercadolibre
   module Entity
-    class OrderItem
+    class ShippingDelivery
       def self.attr_list
-        [:item, :quantity, :unit_price, :currency_id]
+        [:date, :time_from, :time_to]
       end
 
       attr_reader *attr_list
 
       def initialize(attributes={})
         attributes.each do |k, v|
-          if k.to_s == 'item'
-            self.item = Item.new(v)
+          if ['date', 'time_from', 'time_to'].include?(k.to_s)
+            self.send("#{k}=", Time.parse(v)) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

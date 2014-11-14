@@ -69,3 +69,7 @@
 ## v0.2.2
 
 * Fixed runtime dependencies
+
+## v0.3.0
+
+* Refactored orders and shippings

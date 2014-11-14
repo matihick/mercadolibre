@@ -1,8 +1,8 @@
 module Mercadolibre
   module Entity
-    class Auth
+    class BillingInfo
       def self.attr_list
-        [:access_token, :refresh_token, :expired_at]
+        [:doc_type, :doc_number]
       end
 
       attr_reader *attr_list

@@ -6,7 +6,7 @@ module Mercadolibre
         :base_price, :currency_id, :initial_quantity, :available_quantity, :sold_quantity,
         :buying_mode, :listing_type_id, :start_time, :stop_time, :condition, :permalink,
         :thumbnail, :secure_thumbnail, :pictures, :status, :sub_status, :parent_item_id,
-        :automatic_relist, :date_created, :last_updated]
+        :automatic_relist, :date_created, :last_updated, :variation_id, :variation_attributes]
       end
 
       attr_reader *attr_list

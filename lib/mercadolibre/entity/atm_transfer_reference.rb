@@ -1,8 +1,8 @@
 module Mercadolibre
   module Entity
-    class Auth
+    class AtmTransferReference
       def self.attr_list
-        [:access_token, :refresh_token, :expired_at]
+        [:company_id, :transaction_id]
       end
 
       attr_reader *attr_list

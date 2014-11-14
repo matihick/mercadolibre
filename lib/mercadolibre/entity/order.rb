@@ -2,9 +2,10 @@ module Mercadolibre
   module Entity
     class Order
       def self.attr_list
-        [:id, :status, :date_created, :date_closed, :date_last_updated,
-        :hidden_for_seller, :currency_id, :order_items, :total_amount, :buyer, :seller,
-        :payments, :seller_feedback, :buyer_feedback, :shipping_status, :tags]
+        [:id, :status, :status_detail, :date_created, :date_closed, :last_updated,
+        :order_items, :currency_id, :buyer, :seller, :payments, :feedback, :shipping,
+        :tags, :mediations, :coupon, :total_amount, :total_amount_with_shipping,
+        :paid_amount]
       end
 
       attr_reader *attr_list
@@ -16,22 +17,21 @@ module Mercadolibre
           elsif k.to_s == 'payments'
             self.payments = v.map { |x| Payment.new(x) }
           elsif k.to_s == 'feedback'
-            unless v.nil?
-              self.buyer_feedback = Feedback.new(v['purchase']) unless v['purchase'].nil?
-              self.seller_feedback = Feedback.new(v['sale']) unless v['sale'].nil?
-            end
+            self.feedback = OrderFeedback.new(v)
           elsif k.to_s == 'shipping'
-            self.shipping_status = v['status']
+            self.shipping = OrderShipping.new(v)
+          elsif k.to_s == 'coupon'
+            self.coupon = OrderCoupon.new(v)
           elsif ['buyer', 'seller'].include?(k.to_s)
             self.send("#{k}=", User.new(v)) unless v.nil?
-          elsif ['date_created', 'date_closed', 'date_last_updated'].include?(k.to_s)
+          elsif ['date_created', 'date_closed', 'last_updated'].include?(k.to_s)
             self.send("#{k}=", Time.parse(v)) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end
         end
 
-        self.date_last_updated = date_created if date_last_updated.nil?
+        self.last_updated = date_created if last_updated.nil?
       end
 
       private

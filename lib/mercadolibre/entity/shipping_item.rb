@@ -1,8 +1,8 @@
 module Mercadolibre
   module Entity
-    class Auth
+    class ShippingItem
       def self.attr_list
-        [:access_token, :refresh_token, :expired_at]
+        [:id, :description, :quantity, :dimensions]
       end
 
       attr_reader *attr_list

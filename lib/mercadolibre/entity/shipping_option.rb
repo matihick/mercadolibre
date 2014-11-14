@@ -1,16 +1,19 @@
 module Mercadolibre
   module Entity
-    class OrderItem
+    class ShippingOption
       def self.attr_list
-        [:item, :quantity, :unit_price, :currency_id]
+        [:id, :shipping_method_id, :name, :currency_id, :list_cost,
+         :cost, :speed, :estimated_delivery]
       end
 
       attr_reader *attr_list
 
       def initialize(attributes={})
         attributes.each do |k, v|
-          if k.to_s == 'item'
-            self.item = Item.new(v)
+          if k.to_s == 'speed'
+            self.speed = ShippingSpeed.new(v)
+          elsif k.to_s == 'estimated_delivery'
+            self.estimated_delivery = ShippingDelivery.new(v)
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end
