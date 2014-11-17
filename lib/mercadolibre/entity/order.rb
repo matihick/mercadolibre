@@ -13,15 +13,15 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'order_items'
-            self.order_items = v.map { |x| OrderItem.new(x) }
+            self.order_items = v.map { |x| OrderItem.new(x) } unless v.nil?
           elsif k.to_s == 'payments'
-            self.payments = v.map { |x| Payment.new(x) }
+            self.payments = v.map { |x| Payment.new(x) } unless v.nil?
           elsif k.to_s == 'feedback'
-            self.feedback = OrderFeedback.new(v)
+            self.feedback = OrderFeedback.new(v) unless v.nil?
           elsif k.to_s == 'shipping'
-            self.shipping = OrderShipping.new(v)
+            self.shipping = OrderShipping.new(v) unless v.nil?
           elsif k.to_s == 'coupon'
-            self.coupon = OrderCoupon.new(v)
+            self.coupon = OrderCoupon.new(v) unless v.nil?
           elsif ['buyer', 'seller'].include?(k.to_s)
             self.send("#{k}=", User.new(v)) unless v.nil?
           elsif ['date_created', 'date_closed', 'last_updated'].include?(k.to_s)

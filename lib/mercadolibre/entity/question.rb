@@ -15,7 +15,7 @@ module Mercadolibre
           elsif k.to_s == 'from'
             self.user_id = v['id'] unless v.nil?
           elsif k.to_s == 'date_created'
-            self.date_created = Time.parse(v)
+            self.date_created = Time.parse(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

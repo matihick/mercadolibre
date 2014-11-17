@@ -11,7 +11,7 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'picture'
-            self.picture = ItemPicture.new(v)
+            self.picture = ItemPicture.new(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

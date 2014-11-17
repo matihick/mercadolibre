@@ -11,9 +11,9 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'speed'
-            self.speed = ShippingSpeed.new(v)
+            self.speed = ShippingSpeed.new(v) unless v.nil?
           elsif k.to_s == 'estimated_delivery'
-            self.estimated_delivery = ShippingDelivery.new(v)
+            self.estimated_delivery = ShippingDelivery.new(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

@@ -12,13 +12,13 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'registration_date'
-            self.registration_date = Time.parse(v)
+            self.registration_date = Time.parse(v) unless v.nil?
           elsif k.to_s == 'phone'
-            self.phone = Phone.new(v)
+            self.phone = Phone.new(v) unless v.nil?
           elsif k.to_s == 'alternative_phone'
-            self.alternative_phone = Phone.new(v)
+            self.alternative_phone = Phone.new(v) unless v.nil?
           elsif k.to_s == 'billing_info'
-            self.billing_info = BillingInfo.new(v)
+            self.billing_info = BillingInfo.new(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

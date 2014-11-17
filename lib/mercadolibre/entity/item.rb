@@ -14,7 +14,7 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'pictures'
-            self.pictures = v.map { |x| ItemPicture.new(x) }
+            self.pictures = v.map { |x| ItemPicture.new(x) } unless v.nil?
           elsif ['stop_time', 'last_updated', 'start_time', 'date_created'].include?(k.to_s)
             self.send("#{k}=", Time.parse(v)) unless v.nil?
           else

@@ -10,7 +10,7 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'date_created'
-            self.date_created = Time.parse(v)
+            self.date_created = Time.parse(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

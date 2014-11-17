@@ -10,7 +10,7 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'item'
-            self.item = Item.new(v)
+            self.item = Item.new(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

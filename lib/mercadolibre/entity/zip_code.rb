@@ -10,11 +10,11 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'state'
-            self.state = State.new(v)
+            self.state = State.new(v) unless v.nil?
           elsif k.to_s == 'country'
-            self.country = Country.new(v)
+            self.country = Country.new(v) unless v.nil?
           elsif k.to_s == 'city'
-            self.country = City.new(v)
+            self.country = City.new(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

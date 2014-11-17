@@ -11,9 +11,9 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if ['path_from_root', 'children_categories'].include?(k.to_s)
-            self.state = v.map { |x| Category.new(x) }
+            self.state = v.map { |x| Category.new(x) } unless v.nil?
           elsif k.to_s == 'settings'
-            self.settings = CategorySettings.new(v)
+            self.settings = CategorySettings.new(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

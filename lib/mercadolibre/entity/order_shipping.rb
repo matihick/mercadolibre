@@ -12,11 +12,11 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'shipping_option'
-            self.shipping_option = ShippingOption.new(v)
+            self.shipping_option = ShippingOption.new(v) unless v.nil?
           elsif k.to_s == 'shipping_items'
-            self.shipping_items = v.map { |x| ShippingItem.new(x) }
+            self.shipping_items = v.map { |x| ShippingItem.new(x) } unless v.nil?
           elsif k.to_s == 'receiver_address'
-            self.receiver_address = Address.new(v)
+            self.receiver_address = Address.new(v) unless v.nil?
           elsif ['date_first_printed', 'date_created'].include?(k.to_s)
             self.send("#{k}=", Time.parse(v)) unless v.nil?
           else

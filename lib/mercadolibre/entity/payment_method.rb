@@ -12,13 +12,13 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'card_issuer'
-            self.card_issuer = CardIssuer.new(v)
+            self.card_issuer = CardIssuer.new(v) unless v.nil?
           elsif k.to_s == 'payer_costs'
-            self.payer_costs = v.map { |x| PaymentPlan.new(x) }
+            self.payer_costs = v.map { |x| PaymentPlan.new(x) } unless v.nil?
           elsif k.to_s == 'exceptions_by_card_issuer'
-            self.exceptions_by_card_issuer = v.map { |x| PaymentPromotion.new(x) }
+            self.exceptions_by_card_issuer = v.map { |x| PaymentPromotion.new(x) } unless v.nil?
           elsif k.to_s == 'card_configuration'
-            self.card_configuration = v.map { |x| CardConfiguration.new(x) }
+            self.card_configuration = v.map { |x| CardConfiguration.new(x) } unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

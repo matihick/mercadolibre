@@ -73,3 +73,7 @@
 ## v0.3.0
 
 * Refactored orders and shippings
+
+## v0.3.1
+
+* Bugfix on nil values cases

@@ -11,7 +11,7 @@ module Mercadolibre
       def initialize(attributes={})
         attributes.each do |k, v|
           if k.to_s == 'states'
-            self.states = v.map { |x| State.new(x) }
+            self.states = v.map { |x| State.new(x) } unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end
