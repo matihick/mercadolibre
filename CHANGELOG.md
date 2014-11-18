@@ -77,3 +77,7 @@
 ## v0.3.1
 
 * Bugfix on nil values cases
+
+## v0.3.2
+
+* Added order notes
