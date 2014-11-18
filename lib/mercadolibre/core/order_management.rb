@@ -69,8 +69,7 @@ module Mercadolibre
       def get_order_notes(order_id)
         filters = { access_token: @access_token }
         results = get_request("/orders/#{order_id}/notes", filters)
-
-        results[:body].map { |r| Mercadolibre::Entity::OrderNote.new(r) }
+        results[:body]['results'].map { |r| Mercadolibre::Entity::OrderNote.new(r) }
       end
 
       def get_order_feedbacks(order_id)

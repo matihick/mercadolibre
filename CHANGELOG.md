@@ -81,3 +81,7 @@
 ## v0.3.2
 
 * Added order notes
+
+## v0.3.3
+
+* Bugfix order notes
