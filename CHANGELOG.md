@@ -85,3 +85,7 @@
 ## v0.3.3
 
 * Bugfix order notes
+
+## v0.3.4
+
+* Added methods to create, update and destroy order notes
