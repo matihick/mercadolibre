@@ -100,71 +100,67 @@ module Mercadolibre
       end
 
       def get_order_feedbacks(order_id)
-        filters = { access_token: @access_token }
+        filters = { version: '3.0', access_token: @access_token }
 
-        result = get_request("/orders/#{order_id}/feedback", filters)[:body]
+        result = get_request("/orders/#{order_id}/feedback", filters)
 
-        if result['sale']
-          sale_feedback = Mercadolibre::Entity::Feedback.new(result['sale'])
-        else
-          sale_feedback = nil
-        end
-
-        if result['purchase']
-          purchase_feedback = Mercadolibre::Entity::Feedback.new(result['purchase'])
-        else
-          purchase_feedback = nil
-        end
-
-        { seller: sale_feedback, buyer: purchase_feedback }
+        Mercadolibre::Entity::OrderFeedback.new(result[:body])
       end
 
-      def get_buyer_feedback(order_id)
-        result = get_request("/orders/#{order_id}/feedback/purchase?access_token=#{@access_token}")
+      def get_order_buyer_feedback(order_id)
+        filters = { version: '3.0', access_token: @access_token }
+
+        result = get_request("/orders/#{order_id}/feedback/purchase", filters)
 
         Mercadolibre::Entity::Feedback.new(result[:body])
       end
 
-      def get_seller_feedback(order_id)
-        result = get_request("/orders/#{order_id}/feedback/sale?access_token=#{@access_token}")
+      def get_order_seller_feedback(order_id)
+        filters = { version: '3.0', access_token: @access_token }
+
+        result = get_request("/orders/#{order_id}/feedback/sale", filters)
 
         Mercadolibre::Entity::Feedback.new(result[:body])
       end
 
-      def give_feedback_to_order(order_id, feedback_data)
+      def create_order_feedback(order_id, feedback_data)
         payload = feedback_data.to_json
 
         headers = { content_type: :json }
 
-        post_request("/orders/#{order_id}/feedback?access_token=#{@access_token}", payload, headers)[:body]
+        post_request("/orders/#{order_id}/feedback?version=3.0&access_token=#{@access_token}", payload, headers)[:body]
       end
 
-      def change_feedback_from_order(order_id, kind, feedback_data)
+      def change_order_seller_feedback(order_id, kind, feedback_data)
         payload = feedback_data.to_json
 
         headers = { content_type: :json }
 
-        if kind.to_s == 'buyer'
-          put_request("/orders/#{order_id}/feedback/purchase?access_token=#{@access_token}", payload, headers)[:body]
-        elsif kind.to_s == 'seller'
-          put_request("/orders/#{order_id}/feedback/sale?access_token=#{@access_token}", payload, headers)[:body]
-        else
-          raise 'invalid kind'
-        end
+        put_request("/orders/#{order_id}/feedback/sale?version=3.0&access_token=#{@access_token}", payload, headers)[:body]
       end
 
-      def reply_feedback(order_id, kind, text)
+      def change_order_buyer_feedback(order_id, kind, feedback_data)
+        payload = feedback_data.to_json
+
+        headers = { content_type: :json }
+
+        put_request("/orders/#{order_id}/feedback/purchase?version=3.0&access_token=#{@access_token}", payload, headers)[:body]
+      end
+
+      def change_order_feedback(feedback_id, feedback_data)
+        payload = feedback_data.to_json
+
+        headers = { content_type: :json }
+
+        put_request("/feedback/#{feedback_id}?version=3.0&access_token=#{@access_token}", payload, headers)[:body]
+      end
+
+      def reply_order_feedback(feedback_id, text)
         payload = { reply: text }.to_json
 
         headers = { content_type: :json }
 
-        if kind.to_s == 'buyer'
-          post_request("/orders/#{order_id}/feedback/purchase?access_token=#{@access_token}", payload, headers)[:body]
-        elsif kind.to_s == 'seller'
-          post_request("/orders/#{order_id}/feedback/sale?access_token=#{@access_token}", payload, headers)[:body]
-        else
-          raise 'invalid kind'
-        end
+        post_request("/feedback/{feedback_id}/reply?version=3.0&access_token=#{@access_token}", payload, headers)[:body]
       end
 
       def get_site_payment_methods(site_id)

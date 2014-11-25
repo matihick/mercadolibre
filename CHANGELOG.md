@@ -89,3 +89,7 @@
 ## v0.3.4
 
 * Added methods to create, update and destroy order notes
+
+## v0.4.0
+
+* New feedbacks interface

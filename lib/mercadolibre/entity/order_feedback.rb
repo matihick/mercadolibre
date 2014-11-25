@@ -2,14 +2,19 @@ module Mercadolibre
   module Entity
     class OrderFeedback
       def self.attr_list
-        [:buyer, :seller]
+        [:sale, :purchase]
       end
 
       attr_reader *attr_list
 
       def initialize(attributes={})
-        self.buyer = Feedback.new(attributes['buyer']) unless attributes['buyer'].nil?
-        self.seller = Feedback.new(attributes['seller']) unless attributes['seller'].nil?
+        if attributes['sale'].present?
+          self.sale = Feedback.new(attributes['sale'])
+        end
+
+        if attributes['purchase'].present?
+          self.purchase = Feedback.new(attributes['purchase'])
+        end
       end
 
       private

@@ -4,7 +4,7 @@ module Mercadolibre
       def self.attr_list
         [:id, :nickname, :registration_date, :first_name, :last_name, :blocked,
         :country_id, :email, :user_type, :points, :site_id, :permalink, :phone,
-        :alternative_phone, :billing_info]
+        :alternative_phone, :billing_info, :status]
       end
 
       attr_reader *attr_list
