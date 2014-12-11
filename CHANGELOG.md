@@ -97,3 +97,7 @@
 ## v0.4.1
 
 * Bugfixes on feedback and location
+
+## v0.4.2
+
+* Bugfixes

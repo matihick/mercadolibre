@@ -9,16 +9,8 @@ module Mercadolibre
 
       def initialize(attributes={})
         attributes.each do |k, v|
-          if ['date_created', 'visibility_date'].include?(k.to_s)
-            self.date_created = Time.parse(v) unless v.nil?
-          elsif k.to_s == 'to'
-            self.to = User.new(v)
-          elsif k.to_s == 'from'
-            self.from = User.new(v)
-          elsif k.to_s == 'item'
-            self.item = Item.new(v)
-          elsif k.to_s == 'reply'
-            self.reply = FeedbackReply.new(v)
+          if k.to_s == 'reply_date'
+            self.reply_date = Time.parse(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end
