@@ -93,3 +93,7 @@
 ## v0.4.0
 
 * New feedbacks interface
+
+## v0.4.1
+
+* Bugfixes on feedback and location

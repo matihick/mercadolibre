@@ -1,6 +1,6 @@
 module Mercadolibre
   module Entity
-    class Country
+    class Site
       def self.attr_list
         [:id, :name, :country_id, :sale_fees_mode, :mercadopago_version, :default_currency_id,
          :currencies, :immediate_payment, :payment_method_ids, :categories]

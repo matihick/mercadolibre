@@ -1,10 +1,8 @@
 module Mercadolibre
   module Entity
-    class Feedback
+    class FeedbackReply
       def self.attr_list
-        [:to, :has_seller_refunded_money, :status, :reason, :site_id, :date_created, :from,
-         :order_id, :modified, :id, :message, :fulfilled, :item, :visibility_date, :reply,
-         :role, :app_id, :rating, :restock_item]
+        [:message, :reply_date, :reply_status]
       end
 
       attr_reader *attr_list
