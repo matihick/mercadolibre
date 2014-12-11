@@ -101,3 +101,7 @@
 ## v0.4.2
 
 * Bugfixes
+
+## v0.4.3
+
+* Bugfixes

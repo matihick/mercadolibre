@@ -20,7 +20,7 @@ module Mercadolibre
           elsif k.to_s == 'item'
             self.item = Item.new(v)
           elsif k.to_s == 'reply'
-            self.reply = FeedbackReply.new(v)
+            self.reply = FeedbackReply.new(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end
