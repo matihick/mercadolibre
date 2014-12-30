@@ -105,3 +105,7 @@
 ## v0.4.3
 
 * Bugfixes
+
+## v0.5.0
+
+* Added get shipment method
