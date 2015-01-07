@@ -13,11 +13,13 @@ module Mercadolibre
         kind = filters.delete(:kind)
 
         if kind.to_s == 'recent'
-          orders_urls = ['/orders/search/recent']
+          orders_urls = ['/orders/search']
         elsif kind.to_s == 'archived'
           orders_urls = ['/orders/search/archived']
+        elsif kind.to_s == 'pending'
+          orders_urls = ['/orders/search/pending']
         else
-          orders_urls = ['/orders/search/recent', '/orders/search/archived']
+          orders_urls = ['/orders/search', '/orders/search/archived', '/orders/search/pending']
         end
 
         orders_urls.each do |orders_url|
@@ -47,8 +49,10 @@ module Mercadolibre
 
         if kind.to_s == 'archived'
           url = '/orders/search/archived'
+        elsif kind.to_s == 'pending'
+          url = '/orders/search/pending'
         else
-          url = '/orders/search/recent'
+          url = '/orders/search'
         end
 
         response = get_request(url, filters)[:body]
