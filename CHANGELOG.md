@@ -113,3 +113,7 @@
 ## v0.5.1
 
 * Fixes on getting orders method
+
+## v0.5.2
+
+* Added update shipment method
