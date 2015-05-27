@@ -4,7 +4,8 @@ module Mercadolibre
       def self.attr_list
         [:country, :state, :city, :neighborhood, :municipality, :types, :street_name,
          :address_line, :id, :zip_code, :longitude, :street_number, :latitude, :comment,
-         :latitude, :longitude, :geolocation_type, :agency, :is_valid_for_carrier]
+         :latitude, :longitude, :geolocation_type, :agency, :is_valid_for_carrier,
+         :search_location]
       end
 
       attr_reader *attr_list
@@ -23,6 +24,8 @@ module Mercadolibre
             self.municipality = Municipality.new(v) unless v.nil?
           elsif k.to_s == 'agency'
             self.agency = AddressAgency.new(v) unless v.nil?
+          elsif k.to_s == 'search_location'
+            self.search_location = SearchLocation.new(v) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

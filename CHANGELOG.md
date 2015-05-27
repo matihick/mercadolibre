@@ -117,3 +117,7 @@
 ## v0.5.2
 
 * Added update shipment method
+
+## v0.6.0
+
+* Added new item attributes
