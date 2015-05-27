@@ -121,3 +121,7 @@
 ## v0.6.0
 
 * Added new item attributes
+
+## v0.6.1
+
+* Bugfix item shipping
