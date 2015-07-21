@@ -181,7 +181,7 @@ module Mercadolibre
 
       def get_orders_blacklist(user_id)
         results = get_request("/users/#{user_id}/order_blacklist?access_token=#{@access_token}")
-        result[:body].map { |r| r['user']['id'] }
+        results[:body].map { |r| r['user']['id'] }
       end
 
       def add_user_to_orders_blacklist(seller_id, user_id)

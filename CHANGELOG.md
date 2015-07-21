@@ -129,3 +129,7 @@
 ## v0.7.0
 
 * Added orders blacklist and renamed methods for questions blacklist
+
+## v0.7.1
+
+* Bugfix mistype
