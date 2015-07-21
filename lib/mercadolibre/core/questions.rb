@@ -110,12 +110,12 @@ module Mercadolibre
         Mercadolibre::Entity::Question.new(result[:body])
       end
 
-      def get_blacklisted_users_ids(seller_id)
+      def get_questions_blacklist(seller_id)
         result = get_request("/users/#{seller_id}/questions_blacklist?access_token=#{@access_token}")
         result[:body].map { |r| r['user']['id'] }
       end
 
-      def add_user_to_blacklist(seller_id, user_id)
+      def add_user_to_questions_blacklist(seller_id, user_id)
         payload = { user_id: user_id }.to_json
 
         headers = { content_type: :json }
@@ -125,7 +125,7 @@ module Mercadolibre
         post_request(url, payload, headers)[:status_code] == 200
       end
 
-      def remove_user_from_blacklist(seller_id, user_id)
+      def remove_user_from_questions_blacklist(seller_id, user_id)
         url = "/users/#{seller_id}/questions_blacklist/#{user_id}?access_token=#{@access_token}"
 
         delete_request(url)[:status_code] == 200

@@ -125,3 +125,7 @@
 ## v0.6.1
 
 * Bugfix item shipping
+
+## v0.7.0
+
+* Added orders blacklist and renamed methods for questions blacklist
