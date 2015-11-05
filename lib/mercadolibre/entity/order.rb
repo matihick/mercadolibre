@@ -24,6 +24,8 @@ module Mercadolibre
             self.coupon = OrderCoupon.new(v) unless v.nil?
           elsif ['buyer', 'seller'].include?(k.to_s)
             self.send("#{k}=", User.new(v)) unless v.nil?
+          elsif k.to_s == 'mediations'
+            self.mediations = v.map { |x| Mediation.new(x) } unless v.nil?
           elsif ['date_created', 'date_closed', 'last_updated'].include?(k.to_s)
             self.send("#{k}=", Time.parse(v)) unless v.nil?
           else

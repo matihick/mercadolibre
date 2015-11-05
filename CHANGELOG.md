@@ -133,3 +133,7 @@
 ## v0.7.1
 
 * Bugfix mistype
+
+## v0.8.0
+
+* Added attributes to orders, users, added methods to items search
