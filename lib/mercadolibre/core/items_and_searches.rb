@@ -208,6 +208,14 @@ module Mercadolibre
 
         post_request("/items/#{item_id}/descriptions?access_token=#{@access_token}", payload, headers)[:body]
       end
+
+      def update_item_description(item_id, description_id, text)
+        payload = { text: text }.to_json
+
+        headers = { content_type: :json, accept: :json }
+
+        put_request("/items/#{item_id}/descriptions/#{description_id}?access_token=#{@access_token}", payload, headers)[:body]
+      end
     end
   end
 end
