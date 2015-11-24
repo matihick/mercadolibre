@@ -4,8 +4,8 @@ module Mercadolibre
       def self.attr_list
         [:id, :status, :status_detail, :date_created, :date_closed, :last_updated,
         :order_items, :currency_id, :buyer, :seller, :payments, :feedback, :shipping,
-        :tags, :mediations, :coupon, :total_amount, :total_amount_with_shipping,
-        :paid_amount]
+        :tags, :mediations, :comments, :expiration_date, :coupon, :total_amount,
+        :total_amount_with_shipping, :paid_amount]
       end
 
       attr_reader *attr_list
@@ -26,7 +26,7 @@ module Mercadolibre
             self.send("#{k}=", User.new(v)) unless v.nil?
           elsif k.to_s == 'mediations'
             self.mediations = v.map { |x| Mediation.new(x) } unless v.nil?
-          elsif ['date_created', 'date_closed', 'last_updated'].include?(k.to_s)
+          elsif ['date_created', 'date_closed', 'last_updated', 'expiration_date'].include?(k.to_s)
             self.send("#{k}=", Time.parse(v)) unless v.nil?
           else
             self.send("#{k}=", v) if self.respond_to?(k)
