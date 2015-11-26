@@ -41,12 +41,14 @@ module Mercadolibre
       end
 
       def get_site_categories(site_id)
+
         results = get_request("/sites/#{site_id}/categories")
 
         results[:body].map { |r| Mercadolibre::Entity::Category.new(r) }
       end
 
       def get_category(category_id)
+
         result = get_request("/categories/#{category_id}")
 
         Mercadolibre::Entity::Category.new(result[:body])
@@ -54,4 +56,3 @@ module Mercadolibre
     end
   end
 end
-
