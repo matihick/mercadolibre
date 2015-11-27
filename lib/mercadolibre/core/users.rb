@@ -24,6 +24,13 @@ module Mercadolibre
 
         results[:body].map { |r| Mercadolibre::Entity::PaymentMethod.new(r) }
       end
+
+      def revoke_access(user_id)
+        headers = { content_type: :json, accept: :json }
+        results = delete_request("/users/#{user_id}/applications/#{@app_key}?access_token=#{@access_token}", headers)
+
+        results[:body]
+      end
     end
   end
 end
