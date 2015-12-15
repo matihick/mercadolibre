@@ -137,3 +137,7 @@
 ## v0.8.0
 
 * Added attributes to orders, users, added methods to items search
+
+## v0.8.1
+
+* Added order fields
