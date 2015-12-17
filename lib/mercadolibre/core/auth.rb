@@ -8,7 +8,7 @@ module Mercadolibre
           redirect_uri: CGI.escape(@callback_url)
         }.map { |k,v| "#{k}=#{v}" }.join('&')
 
-        "#{@auth_url}/authorization?#{get_attrs}"
+        "#{@auth_url}?#{get_attrs}"
       end
 
       def authenticate(auth_code)

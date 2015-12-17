@@ -9,7 +9,7 @@ module Mercadolibre
       @site = args[:site]
       @access_token = args[:access_token]
       @endpoint_url = 'https://api.mercadolibre.com'
-      @auth_url = 'https://auth.mercadolibre.com.ar'
+      @auth_url = "https://auth.#{sdl}.#{tld}/authorization"
       @debug = args[:debug]
     end
 
@@ -23,6 +23,34 @@ module Mercadolibre
     include Mercadolibre::Core::Users
 
     private
+
+    def sdl
+      if @site == 'MLB' || @site == 'MPT'
+        'mercadolivre'
+      else
+        'mercadolibre'
+      end
+    end
+
+    def tdl
+      case @site
+      when 'MLA' then 'com.ar'
+      when 'MLB' then 'com.br'
+      when 'MLU' then 'com.uy'
+      when 'MLC' then 'cl'
+      when 'MEC' then 'com.ec'
+      when 'MPE' then 'com.pe'
+      when 'MPT' then 'pt'
+      when 'MLV' then 'com.ve'
+      when 'MCO' then 'com.co'
+      when 'MCR' then 'co.cr'
+      when 'MPA' then 'com.pa'
+      when 'MRD' then 'com.do'
+      when 'MLM' then 'com.m'
+      else
+        'com'
+      end
+    end
 
     def get_request(action, params={}, headers={})
       begin
