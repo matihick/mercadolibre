@@ -11,6 +11,7 @@ module Mercadolibre
       @endpoint_url = 'https://api.mercadolibre.com'
       @auth_url = 'https://auth.mercadolibre.com.ar'
       @debug = args[:debug]
+      @environment = args[:environment] || :production
     end
 
     include Mercadolibre::Core::Auth
@@ -24,49 +25,47 @@ module Mercadolibre
 
     private
 
+    def default_args
+      {
+        url: @endpoint_url,
+        verify_ssl: @environment == :production
+      }
+    end
+
+    def merged_args(args)
+      default_args.merge(args) do |key, old_val, new_val|
+        new_val = old_val + new_val if key == :url
+        new_val
+      end
+    end
+
     def get_request(action, params={}, headers={})
-      begin
-        parse_response(RestClient.get("#{@endpoint_url}#{action}", {params: params}.merge(headers)))
-      rescue => e
-        parse_response(e.response)
-      end
+      execute_request(method: :get, url: action, headers: headers.merge(params: params))
     end
 
-    def post_request(action, params={}, headers={})
-      begin
-        parse_response(RestClient.post("#{@endpoint_url}#{action}", params, headers))
-      rescue => e
-        parse_response(e.response)
-      end
+    def post_request(action, payload={}, headers={})
+      execute_request(method: :post, url: action, payload: payload, headers: headers)
     end
 
-    def put_request(action, params={}, headers={})
-      begin
-        parse_response(RestClient.put("#{@endpoint_url}#{action}", params, headers))
-      rescue => e
-        parse_response(e.response)
-      end
+    def put_request(action, payload={}, headers={})
+      execute_request(method: :put, url: action, payload: payload, headers: headers)
     end
 
-    def patch_request(action, params={}, headers={})
-      begin
-        parse_response(RestClient.patch("#{@endpoint_url}#{action}", params, headers))
-      rescue => e
-        parse_response(e.response)
-      end
+    def patch_request(action, payload={}, headers={})
+      execute_request(method: :patch, url: action, payload: payload, headers: headers)
     end
 
     def head_request(action, params={})
-      begin
-        parse_response(RestClient.head("#{@endpoint_url}#{action}", params))
-      rescue => e
-        parse_response(e.response)
-      end
+      execute_request(method: :get, url: action, headers: params)
     end
 
     def delete_request(action, params={})
+      execute_request(method: :get, url: action, headers: params)
+    end
+
+    def execute_request(args)
       begin
-        parse_response(RestClient.delete("#{@endpoint_url}#{action}", params))
+        parse_response(RestClient::Request.execute(merged_args(args)))
       rescue => e
         parse_response(e.response)
       end

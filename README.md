@@ -30,7 +30,8 @@ In order to do that you first need to instance the API:
       app_key: 'YOUR_APP_KEY',
       app_secret: 'YOUR_APP_SECRET',
       callback_url: 'YOUR_CALLBACK_URL',
-      site: 'YOUR_SITE_COUNTRY'
+      site: 'YOUR_SITE_COUNTRY',
+      environment: :development
     })
 
 Site country is the site id for the country you are using (eg. Argentina's site id is MLA).
