@@ -11,6 +11,10 @@ module Mercadolibre
         "#{@auth_url}?#{get_attrs}"
       end
 
+      def logout_url
+        @logout_url
+      end
+
       def authenticate(auth_code)
         response = post_request('/oauth/token', {
           grant_type: 'authorization_code',

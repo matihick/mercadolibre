@@ -9,7 +9,8 @@ module Mercadolibre
       @site = args[:site]
       @access_token = args[:access_token]
       @endpoint_url = 'https://api.mercadolibre.com'
-      @auth_url = "https://auth.#{sdl}.#{tld}/authorization"
+      @auth_url = "https://auth.#{sdl}.#{tdl}/authorization"
+      @logout_url = "https://www.#{sdl}.#{tdl}/jm/logout"
       @debug = args[:debug]
     end
 
