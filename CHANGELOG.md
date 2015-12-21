@@ -141,3 +141,7 @@
 ## v0.8.1
 
 * Added order fields
+
+## v0.8.2
+
+* Fixed seller id attribute when items search
