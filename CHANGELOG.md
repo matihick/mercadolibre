@@ -145,3 +145,7 @@
 ## v0.8.2
 
 * Fixed seller id attribute when items search
+
+## v0.8.3
+
+* Added attributes to item entity

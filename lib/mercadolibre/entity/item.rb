@@ -9,7 +9,7 @@ module Mercadolibre
          :non_mercado_pago_payment_methods, :shipping, :seller_address, :seller_contact, :location,
          :geolocation, :coverage_areas, :attributes, :listing_source, :variations, :status, :sub_status,
          :tags, :warranty, :catalog_product_id, :parent_item_id, :differential_pricing, :deal_ids,
-         :automatic_relist, :date_created, :last_updated, :seller
+         :automatic_relist, :date_created, :last_updated, :seller, :installments, :address,
         ]
       end
 
