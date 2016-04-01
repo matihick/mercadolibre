@@ -149,3 +149,7 @@
 ## v0.8.3
 
 * Added attributes to item entity
+
+## v0.8.4
+
+* Added method to get seller by nickname

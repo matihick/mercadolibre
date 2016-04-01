@@ -19,6 +19,15 @@ module Mercadolibre
         results[:body].map { |r| Mercadolibre::Entity::User.new(r) }
       end
 
+      def get_seller(nickname)
+        filters = { nickname: nickname, limit: 0 }
+        response = get_request("/sites/#{@site}/search", filters)[:body]
+
+        Mercadolibre::Entity::User.new(response['seller'].merge({
+          nickname: nickname
+        }))
+      end
+
       def get_user_accepted_payment_methods(user_id)
         results = get_request("/users/#{user_id}/accepted_payment_methods")
 
