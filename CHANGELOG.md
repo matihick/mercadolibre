@@ -153,3 +153,7 @@
 ## v0.8.4
 
 * Added method to get seller by nickname
+
+## v0.8.5
+
+* Improved method to get seller by nickname

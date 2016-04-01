@@ -22,10 +22,7 @@ module Mercadolibre
       def get_seller(nickname)
         filters = { nickname: nickname, limit: 0 }
         response = get_request("/sites/#{@site}/search", filters)[:body]
-
-        Mercadolibre::Entity::User.new(response['seller'].merge({
-          nickname: nickname
-        }))
+        get_user(response['seller']['id'])
       end
 
       def get_user_accepted_payment_methods(user_id)
