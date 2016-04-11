@@ -161,3 +161,7 @@
 ## v0.8.6
 
 * Added method to get item description
+
+## v0.8.7
+
+* Bugfix on method to get item description

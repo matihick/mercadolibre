@@ -117,7 +117,7 @@ module Mercadolibre
       def get_item_description(item_id)
         result = get_request("/items/#{item_id}/description")
 
-        Mercadolibre::Entity::ItemDescription.new(result)
+        Mercadolibre::Entity::ItemDescription.new(result[:body])
       end
 
       def get_item_descriptions(item_id)
