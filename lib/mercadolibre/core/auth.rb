@@ -29,6 +29,22 @@ module Mercadolibre
         })
       end
 
+      def generate_access_token
+        response = post_request('/oauth/token', {
+          grant_type: 'client_credentials',
+          client_id: @app_key,
+          client_secret: @app_secret
+        })[:body]
+
+        @access_token = response['access_token']
+
+        Mercadolibre::Entity::Auth.new({
+          access_token: @access_token,
+          refresh_token: response['refresh_token'],
+          expired_at: response['expires_in'].to_i.seconds.from_now
+        })
+      end
+
       def update_token(refresh_token)
         response = post_request('/oauth/token', {
           grant_type: 'refresh_token',
