@@ -220,7 +220,7 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)[:body]
+        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)
 
       end
 
@@ -229,7 +229,7 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)[:body]
+        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)
       end
 
       def update_item_identifiers(item_id, attrs)
@@ -237,7 +237,7 @@ module Mercadolibre
 
         headers = { content_type: :json }
 
-        put_request("/items/#{item_id}/product_identifiers?access_token=#{@access_token}", payload, headers)[:body]
+        put_request("/items/#{item_id}/product_identifiers?access_token=#{@access_token}", payload, headers)
       end
 
       def get_item_identifiers(item_id)

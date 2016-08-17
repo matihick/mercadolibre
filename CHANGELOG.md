@@ -173,3 +173,7 @@
 ## v0.9.1
 
 * Added method to get item identifiers
+
+## v0.9.2
+
+* Changed response on update item methods
