@@ -169,3 +169,7 @@
 ## v0.9.0
 
 * Manage items metadata
+
+## v0.9.1
+
+* Added method to get item identifiers

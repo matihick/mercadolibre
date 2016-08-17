@@ -239,6 +239,12 @@ module Mercadolibre
 
         put_request("/items/#{item_id}/product_identifiers?access_token=#{@access_token}", payload, headers)[:body]
       end
+
+      def get_item_identifiers(item_id)
+        result = get_request("/items/#{item_id}/product_identifiers")
+
+        Mercadolibre::Entity::ProductIdentifier.new(result[:body])
+      end
     end
   end
 end
