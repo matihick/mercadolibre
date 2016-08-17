@@ -177,3 +177,7 @@
 ## v0.9.2
 
 * Changed response on update item methods
+
+## v0.9.3
+
+* Return boolean on update item methods
