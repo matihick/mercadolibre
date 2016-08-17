@@ -214,6 +214,31 @@ module Mercadolibre
 
         post_request("/items/#{item_id}/descriptions?access_token=#{@access_token}", payload, headers)[:body]
       end
+
+      def update_item_attributes(item_id, attrs)
+        payload = attrs.to_json
+
+        headers = { content_type: :json, accept: :json }
+
+        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)[:body]
+
+      end
+
+      def delete_item_attributes(item_id, attr_list)
+        payload = attr_list.map { |x| { id: x } }.to_json
+
+        headers = { content_type: :json, accept: :json }
+
+        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)[:body]
+      end
+
+      def update_item_identifiers(item_id, attrs)
+        payload = attrs.to_json
+
+        headers = { content_type: :json }
+
+        put_request("/items/#{item_id}/product_identifiers?access_token=#{@access_token}", payload, headers)[:body]
+      end
     end
   end
 end

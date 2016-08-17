@@ -29,6 +29,8 @@ module Mercadolibre
             self.seller_address = Address.new(v)
           elsif k.to_s == 'geolocation'
             self.geolocation = Geolocation.new(v)
+          elsif k.to_s == 'attributes'
+            self.geolocation = v.map { |x| ItemAttribute.new(x) } unless v.nil?
           elsif k.to_s == 'seller'
             self.seller = User.new(v)
 

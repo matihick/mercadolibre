@@ -165,3 +165,7 @@
 ## v0.8.7
 
 * Bugfix on method to get item description
+
+## v0.9.0
+
+* Manage items metadata
