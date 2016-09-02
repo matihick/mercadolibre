@@ -60,7 +60,9 @@ module Mercadolibre
       end
 
       def get_questions(filters={})
-        filters.merge!({ access_token: @access_token })
+        if @access_token.present?
+          filters.merge!({ access_token: @access_token })
+        end
 
         response = get_request('/questions/search', filters)[:body]
 
