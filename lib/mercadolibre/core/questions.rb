@@ -73,7 +73,11 @@ module Mercadolibre
       end
 
       def get_questions_count(filters={})
-        filters.merge!({ access_token: @access_token, limit: 1, offset: 0 })
+        if @access_token.present?
+          filters.merge!({ access_token: @access_token })
+        end
+
+        filters.merge!({ limit: 1, offset: 0 })
 
         get_request('/questions/search', filters)[:body]['total'].to_i
       end

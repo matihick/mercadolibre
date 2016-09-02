@@ -181,3 +181,11 @@
 ## v0.9.3
 
 * Return boolean on update item methods
+
+## v0.9.4
+
+* Access token is optional to get questions
+
+## v0.9.5
+
+* Fix access token questions count
