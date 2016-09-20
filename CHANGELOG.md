@@ -189,3 +189,7 @@
 ## v0.9.5
 
 * Fix access token questions count
+
+## v0.10.0
+
+* Removed methods with no pagination

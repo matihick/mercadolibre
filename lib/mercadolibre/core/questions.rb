@@ -1,26 +1,6 @@
 module Mercadolibre
   module Core
     module Questions
-      def get_all_my_questions(filters={})
-        filters.merge!({ access_token: @access_token, limit: 50, offset: 0 })
-
-        results = []
-        has_results = true
-        pages_remaining = filters[:pages_count] || -1
-
-        while (has_results && (pages_remaining != 0)) do
-          partial_results = get_request('/my/received_questions/search', filters)[:body]['questions']
-
-          results += partial_results.map { |q| Mercadolibre::Entity::Question.new(q) }
-
-          has_results = partial_results.any?
-          filters[:offset] += 50
-          pages_remaining -= 1
-        end
-
-        results
-      end
-
       def get_my_questions(filters={})
         filters.merge!({ access_token: @access_token })
 
@@ -36,27 +16,6 @@ module Mercadolibre
         filters.merge!({ access_token: @access_token, limit: 1, offset: 0 })
 
         get_request('/my/received_questions/search', filters)[:body]['total'].to_i
-      end
-
-
-      def get_all_questions(filters={})
-        filters.merge!({ access_token: @access_token, limit: 50, offset: 0 })
-
-        results = []
-        has_results = true
-        pages_remaining = filters[:pages_count] || -1
-
-        while (has_results && (pages_remaining != 0)) do
-          partial_results = get_request('/questions/search', filters)[:body]['questions']
-
-          results += partial_results.map { |q| Mercadolibre::Entity::Question.new(q) }
-
-          has_results = partial_results.any?
-          filters[:offset] += 50
-          pages_remaining -= 1
-        end
-
-        results
       end
 
       def get_questions(filters={})

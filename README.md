@@ -95,14 +95,8 @@ API Methods
 
 ##### Items and searches
 
-    * api.get_all_my_item_ids(filters={})
-      -> Search all your item ids with filters (without pagination).
-
     * api.get_my_item_ids(filters={})
       -> Search all your item ids with filters (with pagination).
-
-    * api.get_all_item_ids(filters={})
-      -> Search all item ids with filters (without pagination).
 
     * api.get_item_ids(filters={})
       -> Search all item ids with filters (with pagination).
@@ -178,9 +172,6 @@ API Methods
 
 ##### Order management
 
-    * api.get_all_orders(filters={})
-      -> Get all orders with filters (without pagination)
-
     * api.get_orders(filters={})
       -> Get all orders with filters (with pagination)
 
@@ -212,9 +203,6 @@ API Methods
       -> Get all users restricted to purchase you an item.
 
 ##### Questions
-
-    * api.get_all_questions(filters={})
-      -> Get all questions with filters (without pagination)
 
     * api.get_questions(filters={})
       -> Get all questions with filters (with pagination)

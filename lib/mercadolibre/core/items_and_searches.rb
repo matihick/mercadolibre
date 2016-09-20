@@ -14,28 +14,6 @@ module Mercadolibre
         }
       end
 
-      # This method is meant to be used when you need to save all data in your local database
-      def get_all_my_item_ids(filters={})
-        user_id = get_my_user.id
-
-        filters.merge!({ access_token: @access_token, limit: 50, offset: 0 })
-
-        results = []
-        has_results = true
-
-        pages_remaining = filters[:pages_count] || -1
-
-        while (has_results && (pages_remaining != 0)) do
-          partial_results = get_request("/users/#{user_id}/items/search", filters)[:body]['results']
-          results += partial_results
-          has_results = partial_results.any?
-          filters[:offset] += 50
-          pages_remaining -= 1
-        end
-
-        results
-      end
-
       def get_item_ids(filters={})
         response = get_request("/sites/#{@site}/search", filters)[:body]
 
@@ -45,26 +23,6 @@ module Mercadolibre
         }
       end
 
-      # This method is meant to be used when you need to save all data in your local database
-      def get_all_item_ids(filters={})
-        filters.merge!({ limit: 50, offset: 0 })
-
-        results = []
-        has_results = true
-
-        pages_remaining = filters[:pages_count] || -1
-
-        while (has_results && (pages_remaining != 0)) do
-          partial_results = get_request("/sites/#{@site}/search", filters)[:body]['results']
-          results += partial_results.map { |r| r['id'] }
-          has_results = partial_results.any?
-          filters[:offset] += 50
-          pages_remaining -= 1
-        end
-
-        results
-      end
-
       def search_items(filters={})
         response = get_request("/sites/#{@site}/search", filters)[:body]
 
@@ -72,26 +30,6 @@ module Mercadolibre
           results: response['results'].map { |x| Mercadolibre::Entity::Item.new(x) },
           paging: response['paging']
         }
-      end
-
-      # This method is meant to be used when you need to save all data in your local database
-      def search_all_items(filters={})
-        filters.merge!({ limit: 50, offset: 0 })
-
-        results = []
-        has_results = true
-
-        pages_remaining = filters[:pages_count] || -1
-
-        while (has_results && (pages_remaining != 0)) do
-          partial_results = get_request("/sites/#{@site}/search", filters)[:body]['results']
-          results += partial_results.map { |x| Mercadolibre::Entity::Item.new(x) }
-          has_results = partial_results.any?
-          filters[:offset] += 50
-          pages_remaining -= 1
-        end
-
-        results
       end
 
       def get_item(item_id)

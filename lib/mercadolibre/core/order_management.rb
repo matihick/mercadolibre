@@ -1,46 +1,6 @@
 module Mercadolibre
   module Core
     module OrderManagement
-      def get_all_orders(filters={})
-        filters.merge!({
-          seller: get_my_user.id,
-          access_token: @access_token,
-          limit: 50
-        })
-
-        results = []
-
-        kind = filters.delete(:kind)
-
-        if kind.to_s == 'recent'
-          orders_urls = ['/orders/search']
-        elsif kind.to_s == 'archived'
-          orders_urls = ['/orders/search/archived']
-        elsif kind.to_s == 'pending'
-          orders_urls = ['/orders/search/pending']
-        else
-          orders_urls = ['/orders/search', '/orders/search/archived', '/orders/search/pending']
-        end
-
-        orders_urls.each do |orders_url|
-          has_results = true
-          filters[:offset] = 0
-          pages_remaining = filters[:pages_count] || -1
-
-          while (has_results && (pages_remaining != 0)) do
-            partial_results = get_request(orders_url, filters)[:body]['results']
-
-            results += partial_results.map { |r| Mercadolibre::Entity::Order.new(r) }
-
-            has_results = partial_results.any?
-            filters[:offset] += 50
-            pages_remaining -= 1
-          end
-        end
-
-        results
-      end
-
       def get_orders(kind, filters={})
         filters.merge!({
           seller: get_my_user.id,
