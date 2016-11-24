@@ -1,4 +1,4 @@
-module Mercadolibre
+module Mercadopago
   module Core
     module Auth
       def authenticate_url
@@ -22,7 +22,7 @@ module Mercadolibre
 
         @access_token = response['access_token']
 
-        Mercadolibre::Entity::Auth.new(response.merge({
+        Mercadopago::Entity::Auth.new(response.merge({
           expired_at: (Time.now + response['expires_in'].to_i)
         }))
       end
@@ -37,7 +37,26 @@ module Mercadolibre
 
         @access_token = response['access_token']
 
-        Mercadolibre::Entity::Auth.new(response.merge({
+        Mercadopago::Entity::Auth.new(response.merge({
+          expired_at: (Time.now + response['expires_in'].to_i)
+        }))
+      end
+
+      def create_token
+        headers = {
+          content_type: 'application/x-www-form-urlencoded',
+          accept: :json
+        }
+
+        response = post_request('/oauth/token', {
+          grant_type: 'client_credentials',
+          client_id: @app_key,
+          client_secret: @app_secret
+        }, headers)[:body]
+
+        @access_token = response['access_token']
+
+        Mercadopago::Entity::Auth.new(response.merge({
           expired_at: (Time.now + response['expires_in'].to_i)
         }))
       end

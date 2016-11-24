@@ -1,6 +1,6 @@
 require "mercadolibre/version"
 
-# entities
+# mercadolibre -> entities
 require "mercadolibre/entity/address"
 require "mercadolibre/entity/address_agency"
 require "mercadolibre/entity/answer"
@@ -62,7 +62,7 @@ require "mercadolibre/entity/state"
 require "mercadolibre/entity/user"
 require "mercadolibre/entity/zip_code"
 
-# core
+# mercadolibre -> core
 require "mercadolibre/core/auth"
 require "mercadolibre/core/categories_and_listings"
 require "mercadolibre/core/items_and_searches"
@@ -72,6 +72,13 @@ require "mercadolibre/core/shippings"
 require "mercadolibre/core/questions"
 require "mercadolibre/core/users"
 require "mercadolibre/api"
+
+# mercadopago -< entities
+require "mercadopago/entity/auth"
+
+# mercadopago -< core
+require "mercadopago/core/auth"
+require "mercadopago/api"
 
 # dependencies
 require 'rest-client'

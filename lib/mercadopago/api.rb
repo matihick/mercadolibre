@@ -1,4 +1,4 @@
-module Mercadolibre
+module Mercadopago
   class Api
     attr_accessor :access_token
 
@@ -7,20 +7,13 @@ module Mercadolibre
       @app_secret = args[:app_secret]
       @callback_url = args[:callback_url]
       @access_token = args[:access_token]
-      @endpoint_url = 'https://api.mercadolibre.com'
+      @endpoint_url = 'https://api.mercadopago.com'
       @auth_url = 'https://auth.mercadolibre.com.ar'
       @debug = args[:debug]
-      @site = args[:site]
     end
 
-    include Mercadolibre::Core::Auth
-    include Mercadolibre::Core::CategoriesAndListings
-    include Mercadolibre::Core::ItemsAndSearches
-    include Mercadolibre::Core::LocationsAndCurrencies
-    include Mercadolibre::Core::OrderManagement
-    include Mercadolibre::Core::Questions
-    include Mercadolibre::Core::Shippings
-    include Mercadolibre::Core::Users
+    include Mercadopago::Core::Auth
+    include Mercadolibre::Core::Payments
 
     private
 

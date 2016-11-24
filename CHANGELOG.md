@@ -193,3 +193,7 @@
 ## v0.10.0
 
 * Removed methods with no pagination
+
+## v0.11.0
+
+* Added mercadopago
