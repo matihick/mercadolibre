@@ -13,7 +13,7 @@ module Mercadopago
     end
 
     include Mercadopago::Core::Auth
-    include Mercadolibre::Core::Payments
+    include Mercadopago::Core::Payments
 
     private
 

@@ -1,3 +1,2 @@
 module Mercadolibre
-  VERSION = "0.11.1"
-end
+  VERSION = "0.11.2"

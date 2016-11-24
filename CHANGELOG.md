@@ -201,3 +201,7 @@
 ## v0.11.1
 
 * Added payments module
+
+## v0.11.2
+
+* Bugfix mercadopago module mistype
