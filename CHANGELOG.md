@@ -197,3 +197,7 @@
 ## v0.11.0
 
 * Added mercadopago
+
+## v0.11.1
+
+* Added payments module

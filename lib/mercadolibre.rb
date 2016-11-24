@@ -78,6 +78,7 @@ require "mercadopago/entity/auth"
 
 # mercadopago -< core
 require "mercadopago/core/auth"
+require "mercadopago/core/payments"
 require "mercadopago/api"
 
 # dependencies
