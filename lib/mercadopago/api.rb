@@ -8,7 +8,7 @@ module Mercadopago
       @callback_url = args[:callback_url]
       @access_token = args[:access_token]
       @endpoint_url = 'https://api.mercadopago.com'
-      @auth_url = 'https://auth.mercadolibre.com.ar'
+      @auth_url = 'https://auth.mercadopago.com.ar'
       @debug = args[:debug]
     end
 

@@ -205,3 +205,7 @@
 ## v0.11.2
 
 * Bugfix mercadopago module mistype
+
+## v0.11.3
+
+* Bugfix mercadopago auth url, added payment entities

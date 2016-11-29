@@ -71,14 +71,24 @@ require "mercadolibre/core/order_management"
 require "mercadolibre/core/shippings"
 require "mercadolibre/core/questions"
 require "mercadolibre/core/users"
+
+# mercadolibre -> api
 require "mercadolibre/api"
 
-# mercadopago -< entities
+# mercadopago -> entities
 require "mercadopago/entity/auth"
+require "mercadopago/entity/identification"
+require "mercadopago/entity/money_request"
+require "mercadopago/entity/payer"
+require "mercadopago/entity/payment"
+require "mercadopago/entity/phone"
+require "mercadopago/entity/transaction_details"
 
-# mercadopago -< core
+# mercadopago -> core
 require "mercadopago/core/auth"
 require "mercadopago/core/payments"
+
+# mercadopago -> api
 require "mercadopago/api"
 
 # dependencies
