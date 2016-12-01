@@ -1,15 +1,8 @@
 module Mercadopago
   module Entity
-    class TransactionDetails
+    class FeeDetail
       def self.attr_list
-        [:net_received_amount,
-          :total_paid_amount,
-          :overpaid_amount,
-          :external_resource_url,
-          :installment_amount,
-          :financial_institution,
-          :financial_institution_description,
-          :payment_method_reference_id]
+        [:amount, :fee_payer, :type]
       end
 
       attr_reader *attr_list

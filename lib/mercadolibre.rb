@@ -76,12 +76,19 @@ require "mercadolibre/core/users"
 require "mercadolibre/api"
 
 # mercadopago -> entities
+require "mercadopago/entity/additional_info"
+require "mercadopago/entity/address"
 require "mercadopago/entity/auth"
+require "mercadopago/entity/collector"
+require "mercadopago/entity/fee_detail"
 require "mercadopago/entity/identification"
 require "mercadopago/entity/money_request"
 require "mercadopago/entity/payer"
 require "mercadopago/entity/payment"
 require "mercadopago/entity/phone"
+require "mercadopago/entity/refund"
+require "mercadopago/entity/shipments"
+require "mercadopago/entity/source"
 require "mercadopago/entity/transaction_details"
 
 # mercadopago -> core

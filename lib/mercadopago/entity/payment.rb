@@ -20,6 +20,7 @@ module Mercadopago
           :sponsor_id,
           :authorization_code,
           :collector_id,
+          :collector,
           :payer,
           :metadata,
           :order,
@@ -27,6 +28,7 @@ module Mercadopago
           :transaction_amount,
           :transaction_amount_refunded,
           :coupon_amount,
+          :shipping_cost,
           :differential_pricing_id,
           :deduction_schema,
           :transaction_details,
@@ -40,7 +42,8 @@ module Mercadopago
           :notification_url,
           :refunds,
           :payer,
-          :transaction_details
+          :application_id,
+          :additional_info
         ]
       end
 
@@ -54,8 +57,16 @@ module Mercadopago
             self.send("#{k}=", Time.parse(v)) unless v.nil?
           elsif k.to_s == 'payer'
             self.payer = Payer.new(v)
+          elsif k.to_s == 'collector'
+            self.collector = Collector.new(v)
+          elsif k.to_s == 'refunds'
+            self.refunds = v.map { |x| Refund.new(x) }
           elsif k.to_s == 'transaction_details'
             self.transaction_details = TransactionDetails.new(v)
+          elsif k.to_s == 'additional_info'
+            self.additional_info = AdditionalInfo.new(v)
+          elsif k.to_s == 'fee_details'
+            self.fee_details = v.map { |x| FeeDetail.new(x) }
           else
             self.send("#{k}=", v) if self.respond_to?(k)
           end

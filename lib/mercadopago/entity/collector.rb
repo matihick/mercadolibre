@@ -1,8 +1,8 @@
 module Mercadopago
   module Entity
-    class Payer
+    class Collector
       def self.attr_list
-        [:type, :id, :nickname, :email, :identification, :phone, :first_name, :last_name, :entity_type]
+        [:id, :first_name, :phone, :email, :nickname, :identification, :last_name]
       end
 
       attr_reader *attr_list
@@ -25,3 +25,5 @@ module Mercadopago
     end
   end
 end
+
+

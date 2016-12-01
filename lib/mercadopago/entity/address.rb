@@ -1,15 +1,8 @@
 module Mercadopago
   module Entity
-    class TransactionDetails
+    class Address
       def self.attr_list
-        [:net_received_amount,
-          :total_paid_amount,
-          :overpaid_amount,
-          :external_resource_url,
-          :installment_amount,
-          :financial_institution,
-          :financial_institution_description,
-          :payment_method_reference_id]
+        [:zip_code, :street_name, :street_number, :floor, :apartment]
       end
 
       attr_reader *attr_list

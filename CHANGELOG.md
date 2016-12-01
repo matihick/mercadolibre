@@ -217,3 +217,7 @@
 ## v0.12.1
 
 * Bugfix mercadopago entity some class mismatches
+
+## v0.13.0
+
+* Added fee detail class for payments
