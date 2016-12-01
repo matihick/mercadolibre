@@ -213,3 +213,7 @@
 ## v0.12.0
 
 * Added search payments for mercadopado, bugfix for get mercadopago payment
+
+## v0.12.1
+
+* Bugfix mercadopago entity some class mismatches

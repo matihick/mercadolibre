@@ -1,4 +1,4 @@
-module Mercadolibre
+module Mercadopago
   module Entity
     class Phone
       def self.attr_list

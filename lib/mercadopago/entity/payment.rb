@@ -1,6 +1,6 @@
 module Mercadopago
-  module Payment
-    class Auth
+  module Entity
+    class Payment
       def self.attr_list
         [
           :id,
