@@ -3,13 +3,20 @@ module Mercadopago
     module Payments
       def get_payment(payment_id)
         filters = { access_token: @access_token }
-        r = get_request("/v1/paymetns/#{payment_id}", filters)
+        r = get_request("/v1/payments/#{payment_id}", filters)
 
-        Mercadolibre::Entity::Payment.new(r[:body])
+        Mercadopago::Entity::Payment.new(r[:body])
       end
 
       def search_payments(filters={})
-        raise 'not implemented!'
+        filters.merge!({ access_token: @access_token })
+
+        response = get_request('/v1/payments/search', filters)[:body]
+
+        {
+          results: response['results'].map { |r| Mercadopago::Entity::Payment.new(r) },
+          paging: response['paging']
+        }
       end
 
       def request_payment(attrs={})

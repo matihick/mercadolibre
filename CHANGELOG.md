@@ -209,3 +209,7 @@
 ## v0.11.3
 
 * Bugfix mercadopago auth url, added payment entities
+
+## v0.12.0
+
+* Added search payments for mercadopado, bugfix for get mercadopago payment
