@@ -225,3 +225,7 @@
 ## v0.14.0
 
 * Added attributes for payments
+
+## v0.14.1
+
+* Added order entity for mercadopago

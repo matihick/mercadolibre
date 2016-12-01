@@ -65,6 +65,8 @@ module Mercadopago
             self.transaction_details = TransactionDetails.new(v)
           elsif k.to_s == 'additional_info'
             self.additional_info = AdditionalInfo.new(v)
+          elsif k.to_s == 'order'
+            self.order = Order.new(v)
           elsif k.to_s == 'fee_details'
             self.fee_details = v.map { |x| FeeDetail.new(x) }
           else
