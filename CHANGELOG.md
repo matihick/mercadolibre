@@ -221,3 +221,7 @@
 ## v0.13.0
 
 * Added fee detail class for payments
+
+## v0.14.0
+
+* Added attributes for payments
