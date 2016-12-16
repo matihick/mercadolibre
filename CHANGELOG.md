@@ -229,3 +229,7 @@
 ## v0.14.1
 
 * Added order entity for mercadopago
+
+## v1.0.0
+
+* Full redesign for API, added messaging methods

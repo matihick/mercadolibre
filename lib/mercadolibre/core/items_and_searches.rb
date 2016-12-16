@@ -6,36 +6,19 @@ module Mercadolibre
 
         filters.merge!({ access_token: @access_token, limit: 50, offset: 0 })
 
-        response = get_request("/users/#{user_id}/items/search", filters)[:body]
-
-        {
-          results: response['results'],
-          paging: response['paging']
-        }
+        get_request("/users/#{user_id}/items/search", filters).body
       end
 
       def get_item_ids(filters={})
-        response = get_request("/sites/#{@site}/search", filters)[:body]
-
-        {
-          results: response['results'].map { |r| r['id'] },
-          paging: response['paging']
-        }
+        get_request("/sites/#{@site}/search", filters).body
       end
 
       def search_items(filters={})
-        response = get_request("/sites/#{@site}/search", filters)[:body]
-
-        {
-          results: response['results'].map { |x| Mercadolibre::Entity::Item.new(x) },
-          paging: response['paging']
-        }
+        get_request("/sites/#{@site}/search", filters).body
       end
 
       def get_item(item_id)
-        result = get_request("/items/#{item_id}")
-
-        Mercadolibre::Entity::Item.new(result[:body])
+        get_request("/items/#{item_id}").body
       end
 
       def get_item_visits(item_ids)
@@ -43,48 +26,39 @@ module Mercadolibre
           result = { }
 
           item_ids.each_slice(50) do |ids_group|
-            result.merge!(get_request("/visits/items?ids=#{ids_group.join(',')}")[:body])
+            filters = { ids: ids_group.join(','), api_response_kind: 'hash' }
+            result.merge!(get_request('/visits/items', filters).body)
           end
 
           result
         else
-          get_request("/visits/items?ids=#{item_ids}")[:body][item_ids]
+          filters = { ids: ids_group.join(','), api_response_kind: 'hash' }
+          get_request('/visits/items', filters).body[item_ids]
         end
       end
 
       def get_item_description(item_id)
-        result = get_request("/items/#{item_id}/description")
-
-        Mercadolibre::Entity::ItemDescription.new(result[:body])
+        get_request("/items/#{item_id}/description").body
       end
 
       def get_item_descriptions(item_id)
-        results = get_request("/items/#{item_id}/descriptions")
-
-        results[:body].map { |r| Mercadolibre::Entity::ItemDescription.new(r) }
+        get_request("/items/#{item_id}/descriptions").body
       end
 
       def get_item_available_upgrades(item_id)
-        results = get_request("/items/#{item_id}/available_upgrades?access_token=@access_token")
-
-        results[:body].map { |r| Mercadolibre::Entity::ListingType.new(r) }
+        get_request("/items/#{item_id}/available_upgrades?access_token=@access_token").body
       end
 
       def get_search_url(site_id, q)
-        result = get_request("/sites/#{site_id}/searchUrl?q=#{q}")
-        result[:body]['url']
+        get_request("/sites/#{site_id}/searchUrl?q=#{q}").body.url
       end
 
       def get_hot_items(site_id, category_id, limit=15)
-        results = get_request("/sites/#{site_id}/hot_items/search?category=#{category_id}&limit=#{limit}")
-
-        results[:body].map { |r| Mercadolibre::Entity::Item.new(r) }
+        get_request("/sites/#{site_id}/hot_items/search?category=#{category_id}&limit=#{limit}").body
       end
 
       def get_featured_items(site_id, pool_id)
-        results = get_request("/sites/#{site_id}/featured_items/#{pool_id}")
-
-        results[:body].map { |r| Mercadolibre::Entity::FeaturedItem.new(r) }
+        get_request("/sites/#{site_id}/featured_items/#{pool_id}").body
       end
 
       def get_site_trends(site_id, category_id=nil)
@@ -94,9 +68,7 @@ module Mercadolibre
           params = { }
         end
 
-        results = get_request("/sites/#{site_id}/trends/search", params)
-
-        results[:body].map { |r| Mercadolibre::Entity::SiteTrend.new(r) }
+        get_request("/sites/#{site_id}/trends/search", params).body
       end
 
       def item_valid?(attribs)
@@ -106,7 +78,7 @@ module Mercadolibre
 
         result = post_request("/items/validate?access_token=#{@access_token}", payload, headers)
 
-        (result[:status_code].to_s == '204')
+        (result.status_code.to_s == '204')
       end
 
       def create_item(attribs)
@@ -114,9 +86,7 @@ module Mercadolibre
 
         headers = { content_type: :json }
 
-        result = post_request("/items?access_token=#{@access_token}", payload, headers)
-
-        Mercadolibre::Entity::Item.new(result[:body])
+        post_request("/items?access_token=#{@access_token}", payload, headers).body
       end
 
       def relist_item(item_id, price, quantity, listing_type_id)
@@ -124,9 +94,7 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        result = post_request("/items/#{item_id}/relist?access_token=#{@access_token}", payload, headers)
-
-        Mercadolibre::Entity::Item.new(result[:body])
+        post_request("/items/#{item_id}/relist?access_token=#{@access_token}", payload, headers).body
       end
 
       def update_item_fields(item_id, attribs)
@@ -134,7 +102,7 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)[:body]
+        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers).body
       end
 
       def update_item_listing_type(item_id, listing_type_id)
@@ -142,7 +110,7 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        post_request("/items/#{item_id}/listing_type?access_token=#{@access_token}", payload, headers)[:body]
+        post_request("/items/#{item_id}/listing_type?access_token=#{@access_token}", payload, headers).body
       end
 
       def add_item_description(item_id, text)
@@ -150,7 +118,7 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        post_request("/items/#{item_id}/descriptions?access_token=#{@access_token}", payload, headers)[:body]
+        post_request("/items/#{item_id}/descriptions?access_token=#{@access_token}", payload, headers).body
       end
 
       def update_item_attributes(item_id, attrs)
@@ -158,8 +126,7 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)[:status_code] == 200
-
+        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers).status_code == 200
       end
 
       def delete_item_attributes(item_id, attr_list)
@@ -167,7 +134,7 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)[:status_code] == 200
+        put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers).status_code == 200
       end
 
       def update_item_identifiers(item_id, attrs)
@@ -175,13 +142,11 @@ module Mercadolibre
 
         headers = { content_type: :json }
 
-        put_request("/items/#{item_id}/product_identifiers?access_token=#{@access_token}", payload, headers)[:status_code] == 200
+        put_request("/items/#{item_id}/product_identifiers?access_token=#{@access_token}", payload, headers).status_code == 200
       end
 
       def get_item_identifiers(item_id)
-        result = get_request("/items/#{item_id}/product_identifiers")
-
-        Mercadolibre::Entity::ProductIdentifier.new(result[:body])
+        get_request("/items/#{item_id}/product_identifiers").body
       end
     end
   end

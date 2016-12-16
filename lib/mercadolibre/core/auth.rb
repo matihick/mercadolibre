@@ -18,13 +18,11 @@ module Mercadolibre
           client_secret: @app_secret,
           code: auth_code,
           redirect_uri: @callback_url
-        })[:body]
+        })
 
-        @access_token = response['access_token']
-
-        Mercadolibre::Entity::Auth.new(response.merge({
-          expired_at: (Time.now + response['expires_in'].to_i)
-        }))
+        @access_token = response.body.access_token
+        response.body.expiration_time = (Time.now + response.body.expires_in.to_i)
+        response.body
       end
 
       def update_token(refresh_token)
@@ -33,13 +31,11 @@ module Mercadolibre
           client_id: @app_key,
           client_secret: @app_secret,
           refresh_token: refresh_token
-        })[:body]
+        })
 
-        @access_token = response['access_token']
-
-        Mercadolibre::Entity::Auth.new(response.merge({
-          expired_at: (Time.now + response['expires_in'].to_i)
-        }))
+        @access_token = response.body.access_token
+        response.body.expiration_time = (Time.now + response.body.expires_in.to_i)
+        response.body
       end
     end
   end

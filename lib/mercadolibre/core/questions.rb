@@ -4,18 +4,12 @@ module Mercadolibre
       def get_my_questions(filters={})
         filters.merge!({ access_token: @access_token })
 
-        response = get_request('/my/received_questions/search', filters)[:body]
-
-        {
-          results: response['questions'].map { |r| Mercadolibre::Entity::Question.new(r) },
-          paging: { total: response['total'], limit: response['limit'] }
-        }
+        get_request('/my/received_questions/search', filters).body
       end
 
       def get_my_questions_count(filters={})
         filters.merge!({ access_token: @access_token, limit: 1, offset: 0 })
-
-        get_request('/my/received_questions/search', filters)[:body]['total'].to_i
+        get_request('/my/received_questions/search', filters).body.total.to_i
       end
 
       def get_questions(filters={})
@@ -23,12 +17,7 @@ module Mercadolibre
           filters.merge!({ access_token: @access_token })
         end
 
-        response = get_request('/questions/search', filters)[:body]
-
-        {
-          results: response['questions'].map { |r| Mercadolibre::Entity::Question.new(r) },
-          paging: { total: response['total'], limit: response['limit'] }
-        }
+        get_request('/questions/search', filters).body
       end
 
       def get_questions_count(filters={})
@@ -38,15 +27,13 @@ module Mercadolibre
 
         filters.merge!({ limit: 1, offset: 0 })
 
-        get_request('/questions/search', filters)[:body]['total'].to_i
+        get_request('/questions/search', filters).body['total'].to_i
       end
 
       def get_question(question_id)
         filters = { access_token: @access_token }
 
-        result = get_request("/questions/#{question_id}", filters)[:body]
-
-        Mercadolibre::Entity::Question.new(result)
+        get_request("/questions/#{question_id}", filters).body
       end
 
       def delete_question(question_id)
@@ -60,9 +47,7 @@ module Mercadolibre
 
         headers = { content_type: :json }
 
-        result = post_request("/questions?access_token=#{@access_token}", payload, headers)
-
-        ::Mercadolibre::Entity::Question.new(result[:body])
+        post_request("/questions?access_token=#{@access_token}", payload, headers).body
       end
 
       def answer_question(question_id, text)
@@ -70,14 +55,12 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        result = post_request("/answers?access_token=#{@access_token}", payload, headers)
-
-        Mercadolibre::Entity::Question.new(result[:body])
+        post_request("/answers?access_token=#{@access_token}", payload, headers).body
       end
 
       def get_questions_blacklist(seller_id)
         result = get_request("/users/#{seller_id}/questions_blacklist?access_token=#{@access_token}")
-        result[:body].map { |r| r['user']['id'] }
+        result.body.map { |r| r.user.id }
       end
 
       def add_user_to_questions_blacklist(seller_id, user_id)
@@ -87,13 +70,13 @@ module Mercadolibre
 
         url = "/users/#{seller_id}/questions_blacklist?access_token=#{@access_token}"
 
-        post_request(url, payload, headers)[:status_code] == 200
+        post_request(url, payload, headers).status_code == 200
       end
 
       def remove_user_from_questions_blacklist(seller_id, user_id)
         url = "/users/#{seller_id}/questions_blacklist/#{user_id}?access_token=#{@access_token}"
 
-        delete_request(url)[:status_code] == 200
+        delete_request(url).status_code == 200
       end
     end
   end

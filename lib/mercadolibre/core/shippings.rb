@@ -3,9 +3,7 @@ module Mercadolibre
     module Shippings
       def get_shipment(shipment_id)
         filters = { access_token: @access_token }
-        r = get_request("/shipments/#{shipment_id}", filters)
-
-        Mercadolibre::Entity::Shipment.new(r[:body])
+        get_request("/shipments/#{shipment_id}", filters).body
       end
 
       def update_shipment(shipment_id, attribs)
@@ -13,7 +11,7 @@ module Mercadolibre
 
         headers = { content_type: :json, accept: :json }
 
-        put_request("/shipments/#{shipment_id}?access_token=#{@access_token}", payload, headers)[:body]
+        put_request("/shipments/#{shipment_id}?access_token=#{@access_token}", payload, headers).body
       end
     end
   end
