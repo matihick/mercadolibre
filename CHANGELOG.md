@@ -237,3 +237,7 @@
 ## v1.1.0
 
 * Added shipment methods
+
+## v1.1.1
+
+* Changed response for create/update order notes

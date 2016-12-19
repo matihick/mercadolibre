@@ -44,7 +44,7 @@ module Mercadolibre
         headers = { content_type: :json, accept: :json }
 
         result = post_request("/orders/#{order_id}/notes?access_token=#{@access_token}", payload, headers)
-        result.body.note
+        result.body
       end
 
       def update_order_note(order_id, note_id, text)
@@ -53,7 +53,7 @@ module Mercadolibre
         headers = { content_type: :json, accept: :json }
 
         result = put_request("/orders/#{order_id}/notes/#{note_id}?access_token=#{@access_token}", payload, headers)
-        result.body.note
+        result.body
       end
 
       def delete_order_note(order_id, note_id)
