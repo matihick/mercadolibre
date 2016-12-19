@@ -48,20 +48,18 @@ module Mercadolibre
       end
 
       def get_shipment_labels(shipment_ids, attrs={})
-        filters = {
-          access_token: @access_token,
-          api_response_kind: 'raw'
-        }.merge(attrs)
-
         if shipment_ids.is_a?(Array)
           shipment_ids_data = shipment_ids.join(',')
         else
           shipment_ids_data = shipment_ids
         end
 
-        filters[:shipment_ids] = shipment_ids_data
+        filters = attrs.merge({
+          access_token: @access_token,
+          shipment_ids: shipment_ids_data
+        })
 
-        get_request('/shipment_labels', filters).body
+        get_request('/shipment_labels', filters, { api_response_kind: 'raw' }).body
       end
     end
   end

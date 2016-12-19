@@ -241,3 +241,7 @@
 ## v1.1.1
 
 * Changed response for create/update order notes
+
+## v1.2.0
+
+* Bugfix with json payload

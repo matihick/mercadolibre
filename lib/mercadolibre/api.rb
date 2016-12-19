@@ -30,8 +30,8 @@ module Mercadolibre
 
     def get_request(action, params={}, headers={})
       begin
-        api_response_kind = params.delete('api_response_kind')
-        api_response_kind = params.delete(:api_response_kind) if api_response_kind.nil?
+        api_response_kind = headers.delete('api_response_kind')
+        api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
 
         parse_response(api_response_kind, RestClient.get("#{@endpoint_url}#{action}", {params: params}.merge(headers)))
@@ -42,8 +42,8 @@ module Mercadolibre
 
     def post_request(action, params={}, headers={})
       begin
-        api_response_kind = params.delete('api_response_kind')
-        api_response_kind = params.delete(:api_response_kind) if api_response_kind.nil?
+        api_response_kind = headers.delete('api_response_kind')
+        api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
 
         parse_response(api_response_kind, RestClient.post("#{@endpoint_url}#{action}", params, headers))
@@ -54,8 +54,8 @@ module Mercadolibre
 
     def put_request(action, params={}, headers={})
       begin
-        api_response_kind = params.delete('api_response_kind')
-        api_response_kind = params.delete(:api_response_kind) if api_response_kind.nil?
+        api_response_kind = headers.delete('api_response_kind')
+        api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
 
         parse_response(api_response_kind, RestClient.put("#{@endpoint_url}#{action}", params, headers))
@@ -66,8 +66,8 @@ module Mercadolibre
 
     def patch_request(action, params={}, headers={})
       begin
-        api_response_kind = params.delete('api_response_kind')
-        api_response_kind = params.delete(:api_response_kind) if api_response_kind.nil?
+        api_response_kind = headers.delete('api_response_kind')
+        api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
 
         parse_response(api_response_kind, RestClient.patch("#{@endpoint_url}#{action}", params, headers))
@@ -76,10 +76,10 @@ module Mercadolibre
       end
     end
 
-    def head_request(action, params={})
+    def head_request(action, params={}, headers={})
       begin
-        api_response_kind = params.delete('api_response_kind')
-        api_response_kind = params.delete(:api_response_kind) if api_response_kind.nil?
+        api_response_kind = headers.delete('api_response_kind')
+        api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
 
         parse_response(api_response_kind, RestClient.head("#{@endpoint_url}#{action}", params))
@@ -88,10 +88,10 @@ module Mercadolibre
       end
     end
 
-    def delete_request(action, params={})
+    def delete_request(action, params={}, headers={})
       begin
-        api_response_kind = params.delete('api_response_kind')
-        api_response_kind = params.delete(:api_response_kind) if api_response_kind.nil?
+        api_response_kind = headers.delete('api_response_kind')
+        api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
 
         parse_response(api_response_kind, RestClient.delete("#{@endpoint_url}#{action}", params))

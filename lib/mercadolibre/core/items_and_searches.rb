@@ -26,14 +26,14 @@ module Mercadolibre
           result = { }
 
           item_ids.each_slice(50) do |ids_group|
-            filters = { ids: ids_group.join(','), api_response_kind: 'hash' }
-            result.merge!(get_request('/visits/items', filters).body)
+            filters = { ids: ids_group.join(',') }
+            result.merge!(get_request('/visits/items', filters, { api_response_kind: 'hash' }).body)
           end
 
           result
         else
-          filters = { ids: ids_group.join(','), api_response_kind: 'hash' }
-          get_request('/visits/items', filters).body[item_ids]
+          filters = { ids: ids_group.join(',') }
+          get_request('/visits/items', filters, { api_response_kind: 'hash' }).body[item_ids]
         end
       end
 
