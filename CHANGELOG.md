@@ -233,3 +233,7 @@
 ## v1.0.0
 
 * Full redesign for API, added messaging methods
+
+## v1.1.0
+
+* Added shipment methods
