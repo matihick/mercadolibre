@@ -18,7 +18,7 @@ module Mercadolibre
     include Mercadolibre::Core::LocationsAndCurrencies
     include Mercadolibre::Core::Metrics
     include Mercadolibre::Core::Oauth
-    include Mercadolibre::Core::OrdersAndFeedbacks
+    include Mercadolibre::Core::OrdersAndFeedback
     include Mercadolibre::Core::QuestionsAndAnswers
     include Mercadolibre::Core::Shipping
     include Mercadolibre::Core::UsersAndApps

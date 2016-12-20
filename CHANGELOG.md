@@ -249,3 +249,7 @@
 ## v1.3.0
 
 * Added API methods for categories and refactor on modules
+
+## v1.3.1
+
+* Bugfix module name
