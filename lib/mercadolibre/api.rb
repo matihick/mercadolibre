@@ -1,6 +1,6 @@
 module Mercadolibre
   class Api
-    attr_accessor :access_token
+    attr_accessor :access_token, :site
 
     def initialize(args={})
       @app_key = args[:app_key]

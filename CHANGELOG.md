@@ -253,3 +253,7 @@
 ## v1.3.1
 
 * Bugfix module name
+
+## v1.3.2
+
+* Can set site with an accessor
