@@ -1,6 +1,6 @@
-module Mercadolibre
+module Mercadopago
   module Core
-    module Auth
+    module Oauth
       def authenticate_url
         get_attrs = {
           response_type: 'code',
@@ -32,6 +32,23 @@ module Mercadolibre
           client_secret: @app_secret,
           refresh_token: refresh_token
         })
+
+        @access_token = response.body.access_token
+        response.body.expiration_time = (Time.now + response.body.expires_in.to_i)
+        response.body
+      end
+
+      def create_token
+        headers = {
+          content_type: 'application/x-www-form-urlencoded',
+          accept: :json
+        }
+
+        response = post_request('/oauth/token', {
+          grant_type: 'client_credentials',
+          client_id: @app_key,
+          client_secret: @app_secret
+        }, headers)
 
         @access_token = response.body.access_token
         response.body.expiration_time = (Time.now + response.body.expires_in.to_i)

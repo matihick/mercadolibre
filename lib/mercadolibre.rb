@@ -1,21 +1,22 @@
 require "mercadolibre/version"
 
 # mercadolibre -> core
-require "mercadolibre/core/auth"
 require "mercadolibre/core/categories_and_listings"
 require "mercadolibre/core/collections"
 require "mercadolibre/core/items_and_searches"
 require "mercadolibre/core/locations_and_currencies"
-require "mercadolibre/core/order_management"
-require "mercadolibre/core/questions"
-require "mercadolibre/core/shippings"
-require "mercadolibre/core/users"
+require "mercadolibre/core/metrics"
+require "mercadolibre/core/oauth"
+require "mercadolibre/core/orders_and_feedback"
+require "mercadolibre/core/questions_and_answers"
+require "mercadolibre/core/shipping"
+require "mercadolibre/core/users_and_apps"
 
 # mercadolibre -> api
 require "mercadolibre/api"
 
 # mercadopago -> core
-require "mercadopago/core/auth"
+require "mercadopago/core/oauth"
 require "mercadopago/core/payments"
 
 # mercadopago -> api

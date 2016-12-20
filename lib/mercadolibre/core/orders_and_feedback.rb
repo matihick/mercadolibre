@@ -1,6 +1,6 @@
 module Mercadolibre
   module Core
-    module OrderManagement
+    module OrdersAndFeedback
       def search_archived_orders(filters={})
         filters.merge!({
           seller: get_my_user.id,

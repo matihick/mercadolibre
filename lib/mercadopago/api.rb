@@ -11,7 +11,7 @@ module Mercadopago
       @auth_url = 'https://auth.mercadopago.com.ar'
     end
 
-    include Mercadopago::Core::Auth
+    include Mercadopago::Core::Oauth
     include Mercadopago::Core::Payments
 
     def get_last_response

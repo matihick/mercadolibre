@@ -1,6 +1,6 @@
 module Mercadolibre
   module Core
-    module Shippings
+    module Shipping
       def get_shipment(shipment_id)
         filters = { access_token: @access_token }
         get_request("/shipments/#{shipment_id}", filters).body

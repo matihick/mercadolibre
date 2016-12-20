@@ -1,6 +1,6 @@
 module Mercadolibre
   module Core
-    module Questions
+    module QuestionsAndAnswers
       def get_my_questions(filters={})
         filters.merge!({ access_token: @access_token })
 

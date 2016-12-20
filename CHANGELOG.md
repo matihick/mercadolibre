@@ -245,3 +245,7 @@
 ## v1.2.0
 
 * Bugfix with json payload
+
+## v1.3.0
+
+* Added API methods for categories and refactor on modules
