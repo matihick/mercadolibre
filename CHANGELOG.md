@@ -257,3 +257,7 @@
 ## v1.3.2
 
 * Can set site with an accessor
+
+## v1.3.3
+
+* Added extra methods to api and extra options on order message creation

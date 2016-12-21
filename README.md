@@ -1,9 +1,9 @@
 Mercadolibre
 ==============
 
-Mercadolibre gem implements MELI API (Official API available to interact with Mercadolibre).
+Mercadolibre gem implements MELI API (Official API available to interact with Mercadolibre) and MPAGO API (official API for Mercadopago).
 
-It implements most of the methods of the official API and it makes it very easy to interact with.
+It implements all the methods of the official API and it makes it very easy to interact with.
 
 Requirements
 -----------------
@@ -19,7 +19,7 @@ Installation
     gem install mercadolibre
 
 
-Getting started
+Getting started (MELI)
 -----------------
 
 MELI uses OAuth protocol for authentication, so you first need to get an access token.

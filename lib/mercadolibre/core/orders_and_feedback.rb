@@ -132,7 +132,15 @@ module Mercadolibre
         get_request("/messages/#{message_id}", params).body
       end
 
-      def create_order_message(order_id, user_from, user_to, message, attachments=[])
+      def create_order_message(order_id, user_from, user_to, content_type, message, attachments=[])
+        if content_type == 'plain'
+          message_data = { plain: message }
+        elsif content_type == 'html'
+          message_data = { html: message }
+        else
+          raise 'invalid content type! Allowed options: plain,html.'
+        end
+
         payload = {
           from: { user_id: user_from },
           to: [{
@@ -141,7 +149,7 @@ module Mercadolibre
             resource_id: order_id,
             site_id: @site
           }],
-          text: { plain: message },
+          text: message_data,
           attachments: attachments
         }.to_json
 

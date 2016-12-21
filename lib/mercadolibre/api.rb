@@ -27,6 +27,28 @@ module Mercadolibre
       @last_response
     end
 
+    def get_last_result
+      @last_result
+    end
+
+    def send_custom_request(http_method, action, params={}, headers={})
+      if http_method.to_s.downcase == 'get'
+        get_request(action, params, headers)
+      elsif http_method.to_s.downcase == 'post'
+        post_request(action, params, headers)
+      elsif http_method.to_s.downcase == 'put'
+        put_request(action, params, headers)
+      elsif http_method.to_s.downcase == 'patch'
+        patch_request(action, params, headers)
+      elsif http_method.to_s.downcase == 'head'
+        head_request(action, params, headers)
+      elsif http_method.to_s.downcase == 'delete'
+        delete_request(action, params, headers)
+      else
+        raise 'invalid http method!'
+      end
+    end
+
     private
 
     def get_request(action, params={}, headers={})
@@ -117,6 +139,8 @@ module Mercadolibre
         result.headers = response.headers
         result.body = response.body
       end
+
+      @last_result = result
 
       result
     end
