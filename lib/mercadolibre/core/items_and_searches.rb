@@ -46,7 +46,7 @@ module Mercadolibre
       end
 
       def get_item_available_upgrades(item_id)
-        get_request("/items/#{item_id}/available_upgrades?access_token=@access_token").body
+        get_request("/items/#{item_id}/available_upgrades?access_token=#{@access_token}").body
       end
 
       def get_search_url(site_id, q)
