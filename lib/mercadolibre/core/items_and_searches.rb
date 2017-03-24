@@ -17,8 +17,8 @@ module Mercadolibre
         get_request("/sites/#{@site}/search", filters).body
       end
 
-      def get_item(item_id)
-        get_request("/items/#{item_id}").body
+      def get_item(item_id, attrs={})
+        get_request("/items/#{item_id}", attrs).body
       end
 
       def get_item_visits(item_ids)

@@ -261,3 +261,7 @@
 ## v1.3.3
 
 * Added extra methods to api and extra options on order message creation
+
+## v1.4.0
+
+* Fix on method to get user, removed access token

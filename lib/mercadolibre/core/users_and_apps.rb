@@ -2,7 +2,7 @@ module Mercadolibre
   module Core
     module UsersAndApps
       def get_user(user_id)
-        get_request("/users/#{user_id}", { access_token: @access_token }).body
+        get_request("/users/#{user_id}").body
       end
 
       def get_users(user_ids)
@@ -10,8 +10,7 @@ module Mercadolibre
       end
 
       def get_seller(nickname)
-        filters = { nickname: nickname, limit: 0 }
-        response = get_request("/sites/#{@site}/search", filters)[:body]
+        response = search_items({ nickname: nickname, limit: 0 })
         get_user(response.seller.id)
       end
 
