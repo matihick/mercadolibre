@@ -265,3 +265,7 @@
 ## v1.4.0
 
 * Fix on method to get user, removed access token
+
+## v1.4.1
+
+* Fixed case of invalid user getting seller by nickname

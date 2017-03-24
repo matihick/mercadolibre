@@ -11,7 +11,11 @@ module Mercadolibre
 
       def get_seller(nickname)
         response = search_items({ nickname: nickname, limit: 0 })
-        get_user(response.seller.id)
+        if response.seller.present?
+          get_user(response.seller.id)
+        else
+          nil
+        end
       end
 
       def get_my_user
