@@ -269,3 +269,7 @@
 ## v1.4.1
 
 * Fixed case of invalid user getting seller by nickname
+
+## v1.5.0
+
+* Added method to check money requests
