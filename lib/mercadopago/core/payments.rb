@@ -8,7 +8,6 @@ module Mercadopago
 
       def search_payments(filters={})
         filters.merge!({ access_token: @access_token })
-
         get_request('/payments/search', filters).body
       end
 
