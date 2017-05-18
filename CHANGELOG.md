@@ -273,3 +273,7 @@
 ## v1.5.0
 
 * Added method to check money requests
+
+## v1.6.0
+
+* Endpoint configurable

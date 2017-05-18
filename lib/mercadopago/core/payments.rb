@@ -14,7 +14,6 @@ module Mercadopago
 
       def request_payment(attrs={})
         payload = attrs.to_json
-
         headers = { content_type: :json }
 
         post_request("/money_requests?access_token=#{@access_token}", payload, headers).body
