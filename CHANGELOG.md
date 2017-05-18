@@ -277,3 +277,7 @@
 ## v1.6.0
 
 * Endpoint configurable
+
+## v1.7.0
+
+* Fix methods for get payments

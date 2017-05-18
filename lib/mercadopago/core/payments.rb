@@ -3,12 +3,12 @@ module Mercadopago
     module Payments
       def get_payment(payment_id)
         filters = { access_token: @access_token }
-        get_request("/payments/#{payment_id}", filters).body
+        get_request("/v1/payments/#{payment_id}", filters).body
       end
 
       def search_payments(filters={})
         filters.merge!({ access_token: @access_token })
-        get_request('/payments/search', filters).body
+        get_request('/v1/payments/search', filters).body
       end
 
       def request_payment(attrs={})
