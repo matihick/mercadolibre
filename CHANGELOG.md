@@ -281,3 +281,7 @@
 ## v1.7.0
 
 * Fix methods for get payments
+
+## v1.8.0
+
+* Added deals and method to get mercadopago balance

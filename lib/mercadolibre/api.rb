@@ -25,6 +25,7 @@ module Mercadolibre
 
     include Mercadolibre::Core::CategoriesAndListings
     include Mercadolibre::Core::Collections
+    include Mercadolibre::Core::Deals
     include Mercadolibre::Core::ItemsAndSearches
     include Mercadolibre::Core::LocationsAndCurrencies
     include Mercadolibre::Core::Metrics

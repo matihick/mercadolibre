@@ -79,6 +79,12 @@ module Mercadolibre
       def get_user_accepted_payment_methods(user_id)
         get_request("/users/#{user_id}/accepted_payment_methods").body
       end
+
+      def get_user_mercadopago_balance(user_id)
+        # docs: http://developers.mercadolibre.com/es/saldo-de-la-cuenta
+        params = { access_token: @access_token }
+        get_request("/users/#{user_id}/mercadopago_account/balance", params).body
+      end
     end
   end
 end
