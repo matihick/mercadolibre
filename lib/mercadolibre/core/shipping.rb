@@ -18,16 +18,16 @@ module Mercadolibre
         get_request("/items/#{item_id}/shipping_options").body
       end
 
-      def get_shipping_modes
-        get_request("/sites/#{@site}/shipping_methods").body
+      def get_shipping_modes(site_id)
+        get_request("/sites/#{site_id}/shipping_methods").body
       end
 
-      def get_shipping_services
-        get_request("/sites/#{@site}/shipping_services").body
+      def get_shipping_services(site_id)
+        get_request("/sites/#{site_id}/shipping_services").body
       end
 
-      def get_site_shipping_costs(attrs={})
-        get_request("/sites/#{@site}/shipping_options", attrs).body
+      def get_site_shipping_costs(site_id, attrs={})
+        get_request("/sites/#{site_id}/shipping_options", attrs).body
       end
 
       def get_user_shipping_modes(user_id, attrs={})

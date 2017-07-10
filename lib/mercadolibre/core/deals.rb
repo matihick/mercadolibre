@@ -1,6 +1,5 @@
 module Mercadolibre
   module Core
-    # http://developers.mercadolibre.com/es/ofertas/
     module Deals
       def get_deals_invited(user_id)
         filters = { access_token: @access_token }
@@ -22,16 +21,16 @@ module Mercadolibre
           payload, headers).body
       end
 
-      def update_deal_item(user_id, deal_id, item_data)
+      def update_deal_item(user_id, deal_id, item_id, item_data)
         payload = item_data.to_json
         headers = { content_type: :json, accept: :json }
 
-        put_request("/users/#{user_id}/deals/#{deal_id}/proposed_items?access_token=#{@access_token}",
+        put_request("/users/#{user_id}/deals/#{deal_id}/proposed_items/#{item_id}?access_token=#{@access_token}",
           payload, headers).body
       end
 
       def remove_item_from_deal(user_id, deal_id, item_id)
-        delete_request("/users/#{user_id}/deals/#{deal_id}/proposed_items?access_token=#{@access_token}")
+        delete_request("/users/#{user_id}/deals/#{deal_id}/proposed_items/#{item_id}?access_token=#{@access_token}")
       end
     end
   end

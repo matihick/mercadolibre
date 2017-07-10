@@ -23,17 +23,28 @@ module Mercadolibre
       @site = args[:site]
     end
 
-    include Mercadolibre::Core::CategoriesAndListings
-    include Mercadolibre::Core::Collections
+    include Mercadolibre::Core::Apps
+    include Mercadolibre::Core::Bookmarks
+    include Mercadolibre::Core::Categories
+    include Mercadolibre::Core::Currencies
     include Mercadolibre::Core::Deals
-    include Mercadolibre::Core::ItemsAndSearches
-    include Mercadolibre::Core::LocationsAndCurrencies
+    include Mercadolibre::Core::Feedbacks
+    include Mercadolibre::Core::ItemVariations
+    include Mercadolibre::Core::Items
+    include Mercadolibre::Core::Listings
+    include Mercadolibre::Core::Locations
+    include Mercadolibre::Core::Messaging
     include Mercadolibre::Core::Metrics
+    include Mercadolibre::Core::Money
     include Mercadolibre::Core::Oauth
-    include Mercadolibre::Core::OrdersAndFeedback
-    include Mercadolibre::Core::QuestionsAndAnswers
+    include Mercadolibre::Core::OrderBlacklist
+    include Mercadolibre::Core::OrderNotes
+    include Mercadolibre::Core::Orders
+    include Mercadolibre::Core::Pictures
+    include Mercadolibre::Core::QuestionBlacklist
+    include Mercadolibre::Core::Searching
     include Mercadolibre::Core::Shipping
-    include Mercadolibre::Core::UsersAndApps
+    include Mercadolibre::Core::Users
 
     def get_last_response
       @last_response
