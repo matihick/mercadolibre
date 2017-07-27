@@ -297,3 +297,7 @@
 ## v2.1.2
 
 * Bugfix error with pictures
+
+## v2.2.0
+
+* Bugfix on modules

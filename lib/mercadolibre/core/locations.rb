@@ -1,6 +1,6 @@
 module Mercadolibre
   module Core
-    module LocationsAndCurrencies
+    module Locations
       def get_countries
         get_request('/countries').body
       end
