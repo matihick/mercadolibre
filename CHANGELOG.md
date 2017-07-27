@@ -285,3 +285,7 @@
 ## v1.8.0
 
 * Added deals and method to get mercadopago balance
+
+## v2.1.0
+
+* Fix on pagination for deals

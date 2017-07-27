@@ -1,14 +1,14 @@
 module Mercadolibre
   module Core
     module Deals
-      def get_deals_invited(user_id)
-        filters = { access_token: @access_token }
+      def get_deals_invited(user_id, filters={})
+        filters.merge!({ access_token: @access_token })
 
         get_request("/users/#{user_id}/deals/search", filters).body
       end
 
-      def get_deal_products(user_id, deal_id)
-        filters = { access_token: @access_token }
+      def get_deal_products(user_id, deal_id, filters={})
+        filters.merge!({ access_token: @access_token })
 
         get_request("/users/#{user_id}/deals/#{deal_id}/proposed_items/search", filters).body
       end
