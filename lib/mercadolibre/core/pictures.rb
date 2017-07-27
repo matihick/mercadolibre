@@ -17,8 +17,6 @@ module Mercadolibre
       def add_item_picture(picture_id, item_id)
         curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d
         '{"id":"MLA430387888_032012"}'
-
-        https://api.mercadolibre.com/items/MLA421101451/pictures?access_token=$ACCESS_TOKEN
       end
 
       def replace_item_pictures(item_id, images)

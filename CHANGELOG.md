@@ -289,3 +289,7 @@
 ## v2.1.0
 
 * Fix on pagination for deals
+
+## v2.1.1
+
+* Bugfix syntax error
