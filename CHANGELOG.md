@@ -293,3 +293,7 @@
 ## v2.1.1
 
 * Bugfix syntax error
+
+## v2.1.2
+
+* Bugfix error with pictures
