@@ -1,3 +1,3 @@
 module Mercadolibre
-  VERSION = '2.3.0'
+  VERSION = '3.0.0'
 end

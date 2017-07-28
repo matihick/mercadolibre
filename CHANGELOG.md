@@ -305,3 +305,7 @@
 ## v2.3.0
 
 * Fix on questions
+
+## v3.0.0
+
+* Fix on modules

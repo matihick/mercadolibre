@@ -41,7 +41,9 @@ module Mercadolibre
     include Mercadolibre::Core::OrderNotes
     include Mercadolibre::Core::Orders
     include Mercadolibre::Core::Pictures
+    include Mercadolibre::Core::Projects
     include Mercadolibre::Core::QuestionBlacklist
+    include Mercadolibre::Core::Questions
     include Mercadolibre::Core::Searching
     include Mercadolibre::Core::Shipping
     include Mercadolibre::Core::Users
