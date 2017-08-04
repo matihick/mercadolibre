@@ -309,3 +309,7 @@
 ## v3.0.0
 
 * Fix on modules
+
+## v3.1.0
+
+* Set optional params in metrics.
