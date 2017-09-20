@@ -313,3 +313,7 @@
 ## v3.1.0
 
 * Set optional params in metrics.
+
+## v3.2.0
+
+* Added method to get items by ids

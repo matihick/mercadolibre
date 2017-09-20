@@ -13,6 +13,10 @@ module Mercadolibre
         get_request("/items/#{item_id}", attrs).body
       end
 
+      def get_items(item_ids, attrs={})
+        get_request("/items", attrs.merge(ids: item_ids.uniq.join(','))).body
+      end
+
       def update_item(item_id, attrs)
         payload = attrs.to_json
 
