@@ -321,3 +321,7 @@
 ## v4.0.0
 
 * Added methods for handling pickup stores
+
+## v4.0.1
+
+* Bugfix on include

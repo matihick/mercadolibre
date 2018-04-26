@@ -40,7 +40,7 @@ module Mercadolibre
     include Mercadolibre::Core::OrderBlacklist
     include Mercadolibre::Core::OrderNotes
     include Mercadolibre::Core::Orders
-    include Mercadolibre::Core::PickupStore
+    include Mercadolibre::Core::PickupStores
     include Mercadolibre::Core::Pictures
     include Mercadolibre::Core::Projects
     include Mercadolibre::Core::QuestionBlacklist
