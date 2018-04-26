@@ -40,6 +40,7 @@ module Mercadolibre
     include Mercadolibre::Core::OrderBlacklist
     include Mercadolibre::Core::OrderNotes
     include Mercadolibre::Core::Orders
+    include Mercadolibre::Core::PickupStore
     include Mercadolibre::Core::Pictures
     include Mercadolibre::Core::Projects
     include Mercadolibre::Core::QuestionBlacklist
@@ -54,24 +55,6 @@ module Mercadolibre
 
     def get_last_result
       @last_result
-    end
-
-    def send_custom_request(http_method, action, params={}, headers={})
-      if http_method.to_s.downcase == 'get'
-        get_request(action, params, headers)
-      elsif http_method.to_s.downcase == 'post'
-        post_request(action, params, headers)
-      elsif http_method.to_s.downcase == 'put'
-        put_request(action, params, headers)
-      elsif http_method.to_s.downcase == 'patch'
-        patch_request(action, params, headers)
-      elsif http_method.to_s.downcase == 'head'
-        head_request(action, params, headers)
-      elsif http_method.to_s.downcase == 'delete'
-        delete_request(action, params, headers)
-      else
-        raise 'invalid http method!'
-      end
     end
 
     private

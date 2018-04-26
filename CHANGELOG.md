@@ -317,3 +317,7 @@
 ## v3.2.0
 
 * Added method to get items by ids
+
+## v4.0.0
+
+* Added methods for handling pickup stores
