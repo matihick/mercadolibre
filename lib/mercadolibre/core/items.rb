@@ -10,11 +10,11 @@ module Mercadolibre
       end
 
       def get_item(item_id, attrs={})
-        get_request("/items/#{item_id}", attrs).body
+        get_request("/items/#{item_id}", attrs.merge({ access_token: @access_token })).body
       end
 
       def get_items(item_ids, attrs={})
-        get_request("/items", attrs.merge(ids: item_ids.uniq.join(','))).body
+        get_request("/items", attrs.merge({ids: item_ids.uniq.join(','), access_token: @access_token})).body
       end
 
       def update_item(item_id, attrs)

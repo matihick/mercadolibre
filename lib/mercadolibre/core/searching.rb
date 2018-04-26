@@ -2,11 +2,13 @@ module Mercadolibre
   module Core
     module Searching
       def search_items(filters={})
+        filters.merge!({ access_token: @access_token })
+        
         get_request("/sites/#{@site}/search", filters).body
       end
 
       def search_item_ids(filters={})
-        get_request("/sites/#{@site}/search", filters).body.results.map(&:id)
+        search_items(filters).results.map(&:id)
       end
 
       def search_my_item_ids(filters={})

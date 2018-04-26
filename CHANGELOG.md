@@ -325,3 +325,7 @@
 ## v4.0.1
 
 * Bugfix on include
+
+## v4.1.0
+
+* Added access token to some item methods
