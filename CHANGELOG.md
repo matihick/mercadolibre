@@ -329,3 +329,7 @@
 ## v4.1.0
 
 * Added access token to some item methods
+
+## v4.2.0
+
+* Added methods to pickup stores

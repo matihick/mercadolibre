@@ -20,6 +20,16 @@ module Mercadolibre
         result.status_code == 200
       end
 
+      def search_pickup_stores(user_id, filters={})
+        filters.merge!({ access_token: @access_token })
+        get_request("/users/#{user_id}/stores/search", filters).body
+      end
+
+      def get_pickup_store(store_id)
+        filters = { access_token: @access_token }
+        get_request("/stores/#{store_id}", filters).body
+      end
+
       def create_item_pickup_store(item_id, store_id, attrs)
         payload = attrs.to_json
         headers = { content_type: :json }
