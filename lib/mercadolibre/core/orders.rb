@@ -37,7 +37,7 @@ module Mercadolibre
 
       def get_order_billing_info(order_id)
         filters = { access_token: @access_token }
-        get_request("/orders/#{order_id}/billing_info", filters).body
+        get_request("/orders/#{order_id}/billing_info", filters).body.billing_info
       end
     end
   end
