@@ -333,3 +333,7 @@
 ## v4.2.0
 
 * Added methods to pickup stores
+
+## v4.3.0
+
+* Added method to get order billing info
