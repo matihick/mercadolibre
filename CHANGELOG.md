@@ -341,3 +341,7 @@
 ## v4.4.0
 
 * Fixed response on method to get order billing info
+
+## v4.5.0
+
+* Added method to search user items

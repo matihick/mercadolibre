@@ -83,6 +83,12 @@ module Mercadolibre
 
         get_request("/users/#{user_id}/available_listing_type/#{listing_type}", filters).body
       end
+
+      def get_user_items(user_id, filters={})
+        token_attr = { access_token: @access_token }
+
+        get_request("/users/#{user_id}/items/search", filters.merge(token_attr)).body
+      end
     end
   end
 end
