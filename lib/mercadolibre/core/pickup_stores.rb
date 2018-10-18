@@ -44,7 +44,7 @@ module Mercadolibre
         put_request("/items/#{item_id}/stores/#{store_id}?access_token=#{@access_token}", payload, headers).body
       end
 
-      def delete_item_pickup_store_from(item_id, store_id)
+      def delete_item_pickup_store(item_id, store_id)
         result = delete_request("/items/#{item_id}/stores/#{store_id}?access_token=#{@access_token}")
         result.status_code == 200
       end
@@ -52,6 +52,25 @@ module Mercadolibre
       def get_item_pickup_stores(item_id)
         filters = { access_token: @access_token }
         get_request("/items/#{item_id}/stores", filters).body
+      end
+
+      def create_item_variation_pickup_store(item_id, variation_id, store_id, attrs)
+        payload = attrs.to_json
+        headers = { content_type: :json }
+
+        post_request("/items/#{item_id}/variation/#{variation_id}/stores/#{store_id}?access_token=#{@access_token}", payload, headers).body
+      end
+
+      def update_item_variation_pickup_store(item_id, variation_id, store_id, attrs)
+        payload = attrs.to_json
+        headers = { content_type: :json, accept: :json }
+
+        put_request("/items/#{item_id}/variation/#{variation_id}/stores/#{store_id}?access_token=#{@access_token}", payload, headers).body
+      end
+
+      def delete_item_variation_pickup_store(item_id, variation_id, store_id)
+        result = delete_request("/items/#{item_id}/variation/#{variation_id}/stores/#{store_id}?access_token=#{@access_token}")
+        result.status_code == 200
       end
 
       def get_pickup(pickup_id)

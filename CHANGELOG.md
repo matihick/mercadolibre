@@ -345,3 +345,7 @@
 ## v4.5.0
 
 * Added method to search user items
+
+## v4.6.0
+
+* Added method for availability to pickup store variations
