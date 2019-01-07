@@ -349,3 +349,7 @@
 ## v4.6.0
 
 * Added method for availability to pickup store variations
+
+## v4.7.0
+
+* Added mercadoshops methods for orders

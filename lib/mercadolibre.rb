@@ -37,6 +37,10 @@ require "mercadopago/core/payments"
 # mercadopago -> api
 require "mercadopago/api"
 
+# mercadoshops -> api
+require "mercadoshops/api"
+require "mercadoshops/core/orders"
+
 # dependencies
 require 'rest-client'
 require 'singleton'
