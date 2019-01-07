@@ -8,7 +8,7 @@ module Mercadoshops
       if args[:endpoint_url].present?
         @endpoint_url = args[:endpoint_url]
       else
-        @endpoint_url = 'api.mercadoshops.com'
+        @endpoint_url = 'https://api.mercadoshops.com/v1'
       end
     end
 
