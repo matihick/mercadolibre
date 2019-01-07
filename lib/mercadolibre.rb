@@ -37,9 +37,12 @@ require "mercadopago/core/payments"
 # mercadopago -> api
 require "mercadopago/api"
 
+# mercadoshops -> core
+require "mercadoshops/core/orders"
+
 # mercadoshops -> api
 require "mercadoshops/api"
-require "mercadoshops/core/orders"
+
 
 # dependencies
 require 'rest-client'

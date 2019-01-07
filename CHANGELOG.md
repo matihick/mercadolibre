@@ -353,3 +353,7 @@
 ## v4.7.0
 
 * Added mercadoshops methods for orders
+
+## v4.8.0
+
+* Bugfixes on mercadoshops
