@@ -365,3 +365,7 @@
 ## v4.10.0
 
 * Fixes on mercadoshops
+
+## v4.11.0
+
+* Changed param for create message attachment

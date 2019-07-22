@@ -41,9 +41,10 @@ module Mercadolibre
           payload, headers).body
       end
 
-      def create_attachment(path_to_file)
-        payload = { file: File.new(path_to_file, 'rb') }
-        post_request("/messages/attachments?access_token=#{@access_token}", payload).body
+      def create_attachment(file)
+        payload = { file: file }
+        headers = { content_type: 'multipart/form-data' }
+        post_request("/messages/attachments?access_token=#{@access_token}", payload, headers).body
       end
 
       def get_attachment(attachment_id)
