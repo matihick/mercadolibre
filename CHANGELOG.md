@@ -361,3 +361,7 @@
 ## v4.9.0
 
 * Bugfixes on endpoint for mercadoshops
+
+## v4.10.0
+
+* Fixes on mercadoshops
