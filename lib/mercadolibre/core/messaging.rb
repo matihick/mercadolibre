@@ -51,6 +51,23 @@ module Mercadolibre
         params = { access_token: @access_token }
         get_request("/messages/attachments/#{attachment_id}", params, { api_response_kind: 'raw' }).body
       end
+
+      def get_pack_messages(pack_id, user_id, filters={})
+        filters.merge!({ access_token: @access_token })
+
+        get_request("/messages/packs/#{pack_id}/sellers/#{user_id}", filters).body
+      end
+
+      def create_pack_message(pack_id, user_id, message_data)
+        url = "/messages/packs/#{pack_id}/sellers/#{user_id}?access_token=#{@access_token}"
+        url += "&application_id=#{@app_key}"
+
+        payload = message_data.to_json
+
+        headers = { content_type: :json }
+
+        post_request(url, payload, headers).body
+      end
     end
   end
 end

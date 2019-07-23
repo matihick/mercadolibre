@@ -369,3 +369,7 @@
 ## v4.11.0
 
 * Changed param for create message attachment
+
+## v4.12.0
+
+* Added method to create messaging to packs
