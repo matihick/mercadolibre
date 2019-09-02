@@ -373,3 +373,7 @@
 ## v4.12.0
 
 * Added method to create messaging to packs
+
+## v4.13.0
+
+* Added free shipping cost method

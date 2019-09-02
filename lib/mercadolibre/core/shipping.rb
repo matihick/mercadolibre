@@ -61,6 +61,18 @@ module Mercadolibre
 
         get_request('/shipment_labels', filters, { api_response_kind: 'raw' }).body
       end
+
+      def get_site_free_shipping_options(site_id, args={})
+        get_request("/sites/#{site_id}/shipping_options/free", args).body
+      end
+
+      def get_user_free_shipping_options(user_id, args={})
+        get_request("/users/#{user_id}/shipping_options/free", args).body
+      end
+
+      def get_item_free_shipping_options(item_id, args={})
+        get_request("/items/#{item_id}/shipping_options/free", args).body
+      end
     end
   end
 end
