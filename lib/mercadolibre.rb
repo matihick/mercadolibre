@@ -3,6 +3,7 @@ require "mercadolibre/version"
 # mercadolibre -> core
 require "mercadolibre/core/apps"
 require "mercadolibre/core/bookmarks"
+require "mercadolibre/core/catalog"
 require "mercadolibre/core/categories"
 require "mercadolibre/core/currencies"
 require "mercadolibre/core/deals"

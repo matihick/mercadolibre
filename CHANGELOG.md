@@ -377,3 +377,7 @@
 ## v4.13.0
 
 * Added free shipping cost method
+
+## v4.13.0
+
+* Added method to get catalog elegibility
