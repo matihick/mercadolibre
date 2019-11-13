@@ -10,7 +10,7 @@ module Mercadolibre
       def get_unread_order_messages(filters={})
         filters.merge!({ access_token: @access_token })
 
-        get_request("/messages/pending_read", filters).body
+        get_request("/messages/unread", filters).body
       end
 
       def get_order_message(message_id)

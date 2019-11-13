@@ -385,3 +385,7 @@
 ## v4.15.0
 
 * Fix on method to mark order message as read
+
+## v4.16.0
+
+* Fix on method to search unread messages
