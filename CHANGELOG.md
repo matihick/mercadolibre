@@ -378,6 +378,10 @@
 
 * Added free shipping cost method
 
-## v4.13.0
+## v4.14.0
 
 * Added method to get catalog elegibility
+
+## v4.15.0
+
+* Fix on method to mark order message as read

@@ -38,7 +38,7 @@ module Mercadolibre
         headers = { content_type: :json }
 
         put_request("/messages/mark_as_read/#{message_ids_data}?access_token=#{@access_token}",
-          payload, headers).body
+          { }, headers).body
       end
 
       def create_attachment(file)
