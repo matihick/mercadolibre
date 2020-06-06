@@ -172,7 +172,7 @@ API Methods
 
 ##### Order management
 
-    * api.get_orders(filters={})
+    * api.search_orders(filters={})
       -> Get all orders with filters (with pagination)
 
     * api.get_order(order_id)
