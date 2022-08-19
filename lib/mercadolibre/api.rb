@@ -61,6 +61,8 @@ module Mercadolibre
 
     def get_request(action, params={}, headers={})
       begin
+        headers = headers.merge({'Authorization': "Bearer #{@access_token}"}) unless @access_token.nil?
+
         api_response_kind = headers.delete('api_response_kind')
         api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
@@ -73,6 +75,8 @@ module Mercadolibre
 
     def post_request(action, params={}, headers={})
       begin
+        headers = headers.merge({'Authorization': "Bearer #{@access_token}"}) unless @access_token.nil?
+
         api_response_kind = headers.delete('api_response_kind')
         api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
@@ -85,6 +89,8 @@ module Mercadolibre
 
     def put_request(action, params={}, headers={})
       begin
+        headers = headers.merge({'Authorization': "Bearer #{@access_token}"}) unless @access_token.nil?
+
         api_response_kind = headers.delete('api_response_kind')
         api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
@@ -97,6 +103,8 @@ module Mercadolibre
 
     def patch_request(action, params={}, headers={})
       begin
+        headers = headers.merge({'Authorization': "Bearer #{@access_token}"}) unless @access_token.nil?
+
         api_response_kind = headers.delete('api_response_kind')
         api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
@@ -109,6 +117,8 @@ module Mercadolibre
 
     def head_request(action, params={}, headers={})
       begin
+        headers = headers.merge({'Authorization': "Bearer #{@access_token}"}) unless @access_token.nil?
+
         api_response_kind = headers.delete('api_response_kind')
         api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
@@ -121,6 +131,8 @@ module Mercadolibre
 
     def delete_request(action, params={}, headers={})
       begin
+        headers = headers.merge({'Authorization': "Bearer #{@access_token}"}) unless @access_token.nil?
+
         api_response_kind = headers.delete('api_response_kind')
         api_response_kind = headers.delete(:api_response_kind) if api_response_kind.nil?
         api_response_kind = 'object' if api_response_kind.nil?
